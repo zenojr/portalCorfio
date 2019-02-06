@@ -1,0 +1,58 @@
+
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtro Geral">
+  </mat-form-field>
+  
+  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    
+    <ng-container matColumnDef="codEstabel">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Estab.Vda. </th>
+      <td mat-cell *matCellDef="let item"> {{item.codEstabel}} </td>
+    </ng-container>
+  
+    
+    <ng-container matColumnDef="uf">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Estado </th>
+      <td mat-cell *matCellDef="let item"> {{item.uf}} </td>
+    </ng-container>
+  
+    
+    <ng-container matColumnDef="regiao">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Região </th>
+      <td mat-cell *matCellDef="let item"> {{item.regiao}} </td>
+    </ng-container>
+  
+    
+    <ng-container matColumnDef="fmCodigo">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Fam.Prod. </th>
+      <td mat-cell *matCellDef="let item"> {{item.fmCodigo}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="codCanalVenda">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Canal Vda. </th>
+      <td mat-cell *matCellDef="let item"> {{item.codCanalVenda}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="contribIcms">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Contrib. </th>
+      <td mat-cell *matCellDef="let item"> {{ item.contribIcms | descontosContrib  }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="sufixoCv">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Tab.Preço </th>
+      <td mat-cell *matCellDef="let item"> {{item.sufixoCv}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="desconto">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Tab.Preço </th>
+      <td mat-cell *matCellDef="let item"> {{item.desconto | currency: 'BRL' }} </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  
