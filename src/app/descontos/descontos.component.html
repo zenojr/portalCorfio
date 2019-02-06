@@ -1,4 +1,47 @@
+  
 
+
+<mat-grid-list cols="3" rowHeight="5:2">
+    <mat-grid-tile>
+      <div class="logo" fxLayout="row" >
+          <img src="../../assets/img/pt_logoCorfio.png" alt="">  
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <table>
+          <tr>
+            <td> <strong>Local:</strong> </td>
+            <td> SP CAPITAL </td>
+          </tr>
+          <tr>
+            <td> <strong> Descontos p/ Tabela: </strong> </td>
+            <td> DEZ2018 </td>
+          </tr>
+          <tr>
+            <td> <strong>Faturamento Via:</strong></td>
+            <td>Filial</td>
+          </tr>
+          <tr>
+            <td> <strong>ICMS:</strong></td>
+            <td>18%</td>
+          </tr>
+        </table>    
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <table>
+            <tr>
+              <td><strong>Data:</strong></td>
+              <td>06/02/2019:</td>
+            </tr>
+            <tr>
+              <td><strong>Usuário:</strong></td>
+              <td>Zeno França Jr</td>
+            </tr>
+          </table>  
+    </mat-grid-tile>
+  </mat-grid-list>
+
+  
   <mat-form-field>
     <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtro Geral">
   </mat-form-field>

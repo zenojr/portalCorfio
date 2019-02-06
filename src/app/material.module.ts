@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { MatTableModule } from '@angular/material/table'; 
 import { MatButtonModule } from '@angular/material/button';
 import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource, MatFormFieldModule, MatInputModule } from '@angular/material';
+import { MatTableDataSource, MatFormFieldModule, MatInputModule, MatGridListModule, MatToolbarModule } from '@angular/material';
 
 
 
@@ -15,14 +15,17 @@ import { MatTableDataSource, MatFormFieldModule, MatInputModule } from '@angular
 	MatTableModule,
   MatButtonModule,
   MatFormFieldModule,
-  MatInputModule
+  MatInputModule,
+  MatGridListModule,
+  MatToolbarModule
   ],
   exports: [
 	MatTableModule,
   MatButtonModule,
   MatFormFieldModule,
-  MatInputModule
-	
+  MatInputModule,
+  MatGridListModule,
+	MatToolbarModule
   ]
 })
 export class MaterialModule { }

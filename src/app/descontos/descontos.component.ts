@@ -8,12 +8,7 @@ import { DescontosPipe } from './pipes/descontos.pipe';
 import { CookieService } from 'ngx-cookie-service';
 
 
-export interface Table {
-  color: string;
-  cols: number;
-  rows: number;
-  text: string;
-}
+
 
 @Component({
   selector: 'app-descontos',
@@ -21,6 +16,7 @@ export interface Table {
   styleUrls: ['./descontos.component.css']
 })
 export class DescontosComponent implements OnInit, AfterViewInit {
+
 
   constructor( private descontosService: DescontosService, private cookieService: CookieService ) {
     this.getDescontos();
@@ -50,4 +46,11 @@ export class DescontosComponent implements OnInit, AfterViewInit {
 
 
   getDescontos(): void {
-    this.descontosService.getDescontos
+    this.descontosService.getDescontos()
+    .subscribe(data => {
+      this.dataSource.data = data['ttDesc'];
+    }
+    );
+  }
+
+}

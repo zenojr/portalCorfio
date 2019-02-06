@@ -1,5 +1,4 @@
-export interface Descontos 
-
+export interface Descontos
         {   codCanalVenda: number;
             codEstabel: string;
             contribIcms: boolean;
