@@ -16,16 +16,17 @@ import { CookieService } from 'ngx-cookie-service';
   styleUrls: ['./descontos.component.css']
 })
 export class DescontosComponent implements OnInit, AfterViewInit {
-
-
+ 
   constructor( private descontosService: DescontosService, private cookieService: CookieService ) {
     this.getDescontos();
+    this.descontosService.createCookie();
   }
 
   descontos: Descontos[];
   cookieValue: {} = 'UNKNOWN';
+  
 
-  displayedColumns: string[] = ['codEstabel', 'uf', 'regiao', 'fmCodigo', 'codCanalVenda', 'contribIcms', 'sufixoCv', 'desconto'];
+  displayedColumns: string[] = ['codEstabel','uf','regiao','contrib','fmFio','fmParalelo','fmPp','fmFlex','fmCabo','fmNu'];
   dataSource = new MatTableDataSource<Descontos>();
 
   @ViewChild(MatSort) sort: MatSort;
@@ -37,7 +38,8 @@ export class DescontosComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.dataSource.sort = this.sort;
     // console.log( this.dataSource );
-    this.descontosService.getStorage();
+    this.descontosService.createCookie();
+    this.getUser();
   }
 
   ngAfterViewInit() {
@@ -51,6 +53,10 @@ export class DescontosComponent implements OnInit, AfterViewInit {
       this.dataSource.data = data['ttDesc'];
     }
     );
+  }
+
+  getUser(){
+    console.log(this.descontosService.getUser());  
   }
 
 }

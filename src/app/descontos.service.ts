@@ -18,7 +18,14 @@ export class DescontosService {
     return this.http.get<Descontos[]>(this.descontosURL, { responseType: 'json' });
   }
 
-  getStorage() {
+  getUser(){
+    return this.http.get(this.descontosURL, { responseType: 'json' });
+  }
+
+  createCookie() {
+    // document.cookie = "username=zenoFromAngular";
+    let colect = window.document.cookie;
+    console.log(colect)
   }
 
 

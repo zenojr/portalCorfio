@@ -1,17 +1,15 @@
 export interface Descontos
-        {   codCanalVenda: number;
+        {   
             codEstabel: string;
-            contribIcms: boolean;
-            desconto: number;
-            dtFim: string;
-            dtIni: string;
-            fmCodigo: string;
-            icms: number;
-            momMod: string;
-            nrTabpre: string;
-            regiao: string;
-            sufixoCv: string;
-            tipoDesc: string;
             uf: string;
-            usuarioMod: string;
+            regiao: string;
+            contrib: boolean;
+            fmFio: number;
+            fmParalelo: number;
+            fmPp: number;
+            fmFlex: number;
+            fmCabo: number;
+            fmNu: number;
+            logUser: string,
+            cServer: string
         }
