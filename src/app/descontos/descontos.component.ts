@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { MatSort, MatPaginator, MatTableDataSource, MatFormFieldControl } from '@angular/material';
 import { DescontosService } from '../descontos.service';
-import { Descontos } from './descontos';
+import { Descontos } from './descontos.model';
 import { DataSource } from '@angular/cdk/collections';
 import { BehaviorSubject, Observable} from 'rxjs';
 import { DescontosPipe } from './pipes/descontos.pipe';

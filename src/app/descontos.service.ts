@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Descontos } from './descontos/descontos';
+import { Descontos } from './descontos/descontos.model';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpEvent, HttpInterceptor, HttpHandler, HttpRequest } from '@angular/common/http';
 
