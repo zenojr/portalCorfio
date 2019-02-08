@@ -1,4 +1,4 @@
-export interface Descontos
+export interface User
         {
             codEstabel: string;
             uf: string;
