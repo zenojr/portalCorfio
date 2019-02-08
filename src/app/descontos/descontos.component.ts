@@ -20,7 +20,7 @@ export class DescontosComponent implements OnInit, AfterViewInit {
   }
 
   descontos: Descontos[];
-  // user: User[];
+  user = this.getUser();
   displayedColumns: string[] = ['codEstabel', 'uf' , 'regiao', 'contrib', 'fmFio', 'fmParalelo', 'fmPp', 'fmFlex', 'fmCabo', 'fmNu'];
   dataSource = new MatTableDataSource<Descontos>();
 
@@ -33,15 +33,14 @@ export class DescontosComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.dataSource.sort = this.sort;
     // console.log(window.location.search);
-    this.getUser();
+    this.descontosService.sendUser();
   }
 
   ngAfterViewInit() {
   }
 
-  getUser(): string {
-    const user = window.location.search;
-    console.log(user);
+  getUser() {
+    const user = this.descontosService.getUser();
     return user;
   }
 

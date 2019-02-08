@@ -21,9 +21,19 @@ export class DescontosService {
   }
 
   getUser() {
-    const data = this.http.get<User[]>(this.userURL, { responseType: 'json' });
+    return window.location.search.substring(6);
   }
 
+  sendUser() {
+    const user = window.location.search;
+    return this.http.post('https://jsonplaceholder.typicode.com/posts', user);
+  }
+
+  // gravar(user: any): Promise<any> {
+  //   estabelecimento['ope'] = 'A'; // A para geral  e I inclusão
+  //   return this.http
+  //   .post<any>(this.urlBase + this.urlModule, estabelecimento, this.httpOptions).toPromise();
+  // }
 
 
 }
