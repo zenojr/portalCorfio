@@ -43,7 +43,6 @@ import { LimpaSufixoCvPipe } from './descontos/pipes/limpa-sufixo-cv.pipe';
     MatCardModule,
     MatTableModule,
     MatSortModule,
-    HttpModule,
     MatPaginatorModule,
     FormsModule
   ],
