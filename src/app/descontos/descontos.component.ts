@@ -7,6 +7,7 @@ import { BehaviorSubject, Observable} from 'rxjs';
 import { DescontosPipe } from './pipes/descontos.pipe';
 import { CookieService } from 'ngx-cookie-service';
 import { User } from './user.model';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-descontos',
@@ -32,8 +33,6 @@ export class DescontosComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.dataSource.sort = this.sort;
-    // console.log(window.location.search);
-    this.descontosService.sendUser();
   }
 
   ngAfterViewInit() {
@@ -47,9 +46,8 @@ export class DescontosComponent implements OnInit, AfterViewInit {
   getDescontos(): void {
     this.descontosService.getDescontos()
     .subscribe(data => {
-      this.dataSource.data = data['ttDesc'];
-    }
-    );
+      this.dataSource.data = data['ttDesc']
+    });
   }
 
 
