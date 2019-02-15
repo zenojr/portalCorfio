@@ -14,9 +14,7 @@ import { DescontosPipe } from './pipes/descontos.pipe';
 export class DescontosComponent implements OnInit, AfterViewInit {
 
   constructor( private descontosService: DescontosService ) {
-    
   }
-
 
   date = new Date();
   dataCabecalho: [];
@@ -32,19 +30,10 @@ export class DescontosComponent implements OnInit, AfterViewInit {
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
-
-  applyFilterEstab(filterValueEstab: string) {
-    // this.dataSource.filter = foilterValue.trim().toLowerCase();
-    this.dataSource.filterPredicate = (data: Descontos) => data.regiao.indexOf(filterValueEstab) != -1;
-
-  }
-
-  
+  }  
 
   ngOnInit() {
     this.getDescontosTable();
-    
   }
 
   ngAfterViewInit() {
@@ -67,6 +56,4 @@ export class DescontosComponent implements OnInit, AfterViewInit {
       this.dataSource.data = data['ttDesc'];
     });
   }
-
-
 }
