@@ -22,14 +22,23 @@ export class DescontosComponent implements OnInit, AfterViewInit {
   dataCabecalho: [];
   descontos: Descontos[];
   user = this.descontosService.getUser();
-  displayedColumns: string[] = ['codEstabel', 'uf' , 'regiao', 'contrib', 'fmFio', 'fmParalelo', 'fmPp', 'fmFlex', 'fmCabo', 'fmNu'];
+  displayedColumns: string[] = ['codEstabel', 'uf' , 'regiao', 'contrib', 'fmFio',
+  'fmParalelo', 'fmPp', 'fmFlex', 'fmCabo', 'fmNu', 'sufixoCv'];
+
   dataSource = new MatTableDataSource<Descontos>();
   @ViewChild(MatSort) sort: MatSort;
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
-    console.log(this.dataSource.filter);
   }
+
+  applyFilterEstab(filterValueEstab: string) {
+    // this.dataSource.filter = foilterValue.trim().toLowerCase();
+    this.dataSource.filterPredicate = (data: Descontos) => data.regiao.indexOf(filterValueEstab) != -1;
+
+  }
+
+  
 
   ngOnInit() {
     this.getDescontosTable();

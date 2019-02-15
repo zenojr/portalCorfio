@@ -20,6 +20,8 @@ import { DescontosComponent } from './descontos/descontos.component';
 import { DescontosService } from './descontos.service';
 import { DescontosPipe } from './descontos/pipes/descontos.pipe';
 import { CookieService } from 'ngx-cookie-service';
+import { FiltroPorEstabelecimentoPipe } from './descontos/pipes/filtro-por-estabelecimento.pipe';
+import { LimpaSufixoCvPipe } from './descontos/pipes/limpa-sufixo-cv.pipe';
 
 
 
@@ -28,7 +30,9 @@ import { CookieService } from 'ngx-cookie-service';
   declarations: [
     AppComponent,
     DescontosComponent,
-    DescontosPipe
+    DescontosPipe,
+    FiltroPorEstabelecimentoPipe,
+    LimpaSufixoCvPipe
   ],
   imports: [
     BrowserModule,

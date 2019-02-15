@@ -10,6 +10,8 @@ export interface Descontos
             fmFlex: number;
             fmCabo: number;
             fmNu: number;
-            logUser: string;
-            cServer: string;
+            sufixoCv: string;
         }
+
+
+
