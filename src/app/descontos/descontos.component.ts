@@ -16,26 +16,29 @@ export class DescontosComponent implements OnInit, AfterViewInit {
   constructor( private descontosService: DescontosService ) {
     
   }
-  dataAtual = new Date();
+
+
+  date = new Date();
   dataCabecalho: [];
   descontos: Descontos[];
   user = this.descontosService.getUser();
   displayedColumns: string[] = ['codEstabel', 'uf' , 'regiao', 'contrib', 'fmFio', 'fmParalelo', 'fmPp', 'fmFlex', 'fmCabo', 'fmNu'];
   dataSource = new MatTableDataSource<Descontos>();
-
   @ViewChild(MatSort) sort: MatSort;
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
+    console.log(this.dataSource.filter);
   }
 
   ngOnInit() {
     this.getDescontosTable();
-    this.dataSource.sort = this.sort;
+    
   }
 
   ngAfterViewInit() {
     this.getDataCadecalho();
+    this.dataSource.sort = this.sort;
   }
 
   getDataCadecalho() {

@@ -1,8 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { LOCALE_ID } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
+
+// REGIONALIZACAO DA APP
+import {NgModule, LOCALE_ID} from '@angular/core';
+import localept from '@angular/common/locales/pt';
+import {HashLocationStrategy, LocationStrategy, registerLocaleData} from '@angular/common';
+registerLocaleData(localept, 'pt');
 
 // my imports
 import { FormsModule } from '@angular/forms'
@@ -41,7 +46,7 @@ import { CookieService } from 'ngx-cookie-service';
   providers: [
     DescontosService,
     CookieService,
-    { provide: LOCALE_ID, useValue: "pt-BR" }
+    { provide: LOCALE_ID, useValue: "pt" }
   ],
   bootstrap: [AppComponent]
 })
