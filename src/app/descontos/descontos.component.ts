@@ -5,9 +5,6 @@ import { Descontos } from './descontos.model';
 import { DataSource } from '@angular/cdk/collections';
 import { BehaviorSubject, Observable} from 'rxjs';
 import { DescontosPipe } from './pipes/descontos.pipe';
-import { CookieService } from 'ngx-cookie-service';
-import { User } from './user.model';
-import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-descontos',
@@ -16,12 +13,13 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class DescontosComponent implements OnInit, AfterViewInit {
 
-  constructor( private descontosService: DescontosService, private cookieService: CookieService ) {
-    this.getDescontos();
+  constructor( private descontosService: DescontosService ) {
+    
   }
-
+  dataAtual = new Date();
+  dataCabecalho: [];
   descontos: Descontos[];
-  user = this.getUser();
+  user = this.descontosService.getUser();
   displayedColumns: string[] = ['codEstabel', 'uf' , 'regiao', 'contrib', 'fmFio', 'fmParalelo', 'fmPp', 'fmFlex', 'fmCabo', 'fmNu'];
   dataSource = new MatTableDataSource<Descontos>();
 
@@ -32,21 +30,26 @@ export class DescontosComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
+    this.getDescontosTable();
     this.dataSource.sort = this.sort;
   }
 
   ngAfterViewInit() {
+    this.getDataCadecalho();
   }
 
-  getUser() {
-    const user = this.descontosService.getUser();
-    return user;
+  getDataCadecalho() {
+    return this.descontosService.getdataCabecalho().subscribe(
+      data => {this.dataCabecalho = data,
+      console.log(this.dataCabecalho);
+      }
+    );
   }
 
-  getDescontos(): void {
+  getDescontosTable(): void {
     this.descontosService.getDescontos()
     .subscribe(data => {
-      this.dataSource.data = data['ttDesc']
+      this.dataSource.data = data['ttDesc'];
     });
   }
 
