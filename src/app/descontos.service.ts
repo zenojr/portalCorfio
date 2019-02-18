@@ -13,7 +13,7 @@ export class DescontosService {
   private descontosURL = 'http://192.168.0.7:8080/cgi-bin/wspd_cgi.sh/WService=corfio/wep/we0040041.p?usuario=';
 
   constructor( private http: HttpClient, private cookieService: CookieService ) {
-    console.log('Desc service run!');
+    console.log('Desconto service run!');
   }
 
   getdataCabecalho() {
@@ -21,7 +21,7 @@ export class DescontosService {
   }
 
   getDescontos(): Observable<Descontos[]> {
-    let headers = new HttpHeaders();
+    const headers = new HttpHeaders();
     return this.http.get<Descontos[]>(this.descontosURL + this.user , {headers});
   }
 
