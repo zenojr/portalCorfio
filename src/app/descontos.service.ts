@@ -29,10 +29,8 @@ export class DescontosService {
     return window.location.search.substring(6);
   }
 
-  sendUser() {
-    const user = window.location.search;
-    return this.http.post('https://jsonplaceholder.typicode.com/posts', user);
-  }
+
+ 
 
 
 }

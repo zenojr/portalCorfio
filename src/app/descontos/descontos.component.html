@@ -19,15 +19,60 @@
     </mat-grid-tile>
   </mat-grid-list>
 
- 
-
-  <mat-form-field>
-    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtro Geral">
-  </mat-form-field>
-  <br>
-  <mat-form-field>
-    <input matInput (keyup)="applyFilterEstab($event.target.value)" placeholder="Filtro Estab">
-  </mat-form-field>
+  <h2>Filtros</h2>
+<div class="combobox-forms-main">
+  <!-- <div>
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtro Geral">
+    </mat-form-field>
+  </div> -->
+  <div >
+    <mat-form-field>
+      <mat-select placeholder="Estab.Vda">
+        <mat-option *ngFor="let item of dataSource.data | groupByCodEstabel" [value]="item.codEstabel">
+          {{item.codEstabel }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <mat-select placeholder="Contribuinte">
+        <mat-option *ngFor="let item of dataSource.data | groupByContrib " [value]="item.contrib">
+          {{item.contrib | descontosContrib }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <mat-select placeholder="Estado">
+        <mat-option *ngFor="let item of dataSource.data | groupByUF" [value]="item.uf">
+          {{item.uf}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <mat-select placeholder="Região">
+        <mat-option *ngFor="let item of dataSource.data | groupByRegiao" [value]="item.regiao">
+          {{item.regiao}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <mat-select placeholder="Numero Tab">
+        <mat-option *ngFor="let item of dataSource.data | groupByNumeroTab" [value]="item.sufixoCv">
+          {{item.sufixoCv}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    
+  </div>
+</div>
   
 <div>
     <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
@@ -98,7 +143,7 @@
     [length]="dataSource?.filteredData.length"
     [pageIndex]="0"
     [pageSize]="25"
-    [pageSizeOptions]="[5, 10, 25, 100]">
+    [pageSizeOptions]="[5, 25, 50, 100]">
   </mat-paginator>
 </div>
 

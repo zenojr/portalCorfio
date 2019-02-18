@@ -1,10 +1,11 @@
 import { Component, OnInit, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
-import { MatSort, MatPaginator, MatTableDataSource, MatFormFieldControl } from '@angular/material';
+import { MatSort, MatPaginator, MatTableDataSource, MatFormFieldControl, MatSelect } from '@angular/material';
 import { DescontosService } from '../descontos.service';
 import { Descontos } from './descontos.model';
 import { DataSource } from '@angular/cdk/collections';
 import { BehaviorSubject, Observable} from 'rxjs';
 import { DescontosPipe } from './pipes/descontos.pipe';
+
 
 @Component({
   selector: 'app-descontos',
@@ -34,20 +35,33 @@ export class DescontosComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.getDescontosTable();
+    this.removeDuplicate();
+    
   }
 
   ngAfterViewInit() {
-    this.getDataCadecalho();
+    
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
   }
 
-  getDataCadecalho() {
-    return this.descontosService.getdataCabecalho().subscribe(
-      data => {this.dataCabecalho = data,
-      console.log(this.dataCabecalho);
-      }
-    );
+  // getDataCadecalho() {
+  //   return this.descontosService.getdataCabecalho().subscribe(
+  //     data => {this.dataCabecalho = data,
+  //     console.log(this.dataCabecalho);
+  //     }
+  //   );
+  // }
+
+  removeDuplicate() {
+    let groupBy = function(xs, key) {
+      return xs.reduce(function(rv, x) {
+        (rv[x[key]] = rv[x[key]] || []).push(x);
+        return rv;
+      }, {});
+    };
+    
+    console.log(groupBy(['one', 'two', 'three'], 'length'));
   }
 
   getDescontosTable(): void {

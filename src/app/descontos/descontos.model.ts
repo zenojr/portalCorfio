@@ -12,6 +12,3 @@ export interface Descontos
             fmNu: number;
             sufixoCv: string;
         }
-
-
-
