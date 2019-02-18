@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
+import { Component, OnChanges, OnInit, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
 import { MatSort, MatPaginator, MatTableDataSource, MatFormFieldControl, MatSelect } from '@angular/material';
 import { DescontosService } from '../descontos.service';
 import { Descontos } from './descontos.model';
@@ -17,6 +17,9 @@ export class DescontosComponent implements OnInit, AfterViewInit {
   constructor( private descontosService: DescontosService ) {
   }
 
+  selectedOption: string;
+  printedOption: string;
+
   date = new Date();
   dataCabecalho: [];
   descontos: Descontos[];
@@ -29,20 +32,37 @@ export class DescontosComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild('filter') filter: ElementRef;
 
-  applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-  }  
+  // applyFilter(filterValue: string) {
+  //   this.dataSource.filter = filterValue.trim().toLowerCase();
+  // }
+
+  applyFilter() {
+    this.dataSource.filter = this.selectedOption.trim().toLowerCase();
+  }
 
   ngOnInit() {
     this.getDescontosTable();
   }
 
   ngAfterViewInit() {
-    
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
   }
 
+  ngOnChanges(changes: Descontos): void {
+    console.log(changes); 
+    
+  }
+
+  print() {
+    this.printedOption = this.selectedOption;
+  }
+
+  teste(value: string){
+    const data = this.dataSource.filter = value.trim().toLowerCase();
+    console.log('clicou');
+    console.log(data);
+  }
   // getDataCadecalho() {
   //   return this.descontosService.getdataCabecalho().subscribe(
   //     data => {this.dataCabecalho = data,
