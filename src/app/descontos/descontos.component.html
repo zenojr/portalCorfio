@@ -28,7 +28,7 @@
   </div> -->
   <div >
     <mat-form-field>
-      <mat-select placeholder="Estab.Vda">
+      <mat-select [(ngModel)] = "selectedOption" placeholder="Estab.Vda">
         <mat-option *ngFor="let item of dataSource.data | groupByCodEstabel" [value]="item.codEstabel">
           {{item.codEstabel }}
         </mat-option>
@@ -37,7 +37,7 @@
   </div>
   <div>
     <mat-form-field>
-      <mat-select placeholder="Contribuinte">
+      <mat-select [(ngModel)] = "selectedOption" placeholder="Contribuinte">
         <mat-option *ngFor="let item of dataSource.data | groupByContrib " [value]="item.contrib">
           {{item.contrib | descontosContrib }}
         </mat-option>
@@ -52,13 +52,10 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <button (click)="print()">Aplicar Filtro</button> 
-    <p>Selected option: {{ selectedOption }}</p>
-    <p>Button output: {{ printedOption }}</p>
   </div>
   <div>
     <mat-form-field>
-      <mat-select placeholder="Região">
+      <mat-select [(ngModel)] = "selectedOption" placeholder="Região">
         <mat-option *ngFor="let item of dataSource.data | groupByRegiao" [value]="item.regiao">
           {{item.regiao}}
         </mat-option>
@@ -67,7 +64,7 @@
   </div>
   <div>
     <mat-form-field>
-      <mat-select placeholder="Numero Tab">
+      <mat-select [(ngModel)] = "selectedOption" placeholder="Numero Tab">
         <mat-option *ngFor="let item of dataSource.data | groupByNumeroTab" [value]="item.sufixoCv">
           {{item.sufixoCv}}
         </mat-option>
@@ -75,8 +72,11 @@
     </mat-form-field>
     
   </div>
-</div>
   
+</div>
+<button mat-button (click)="filtro()">Aplicar Filtro</button> 
+<p>Filtro Selecionado: {{ selectedOption }}</p>
+<p>Filtro Aplicado: {{ printedOption }}</p>
 <div>
     <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
     

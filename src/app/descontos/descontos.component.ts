@@ -5,6 +5,7 @@ import { Descontos } from './descontos.model';
 import { DataSource } from '@angular/cdk/collections';
 import { BehaviorSubject, Observable} from 'rxjs';
 import { DescontosPipe } from './pipes/descontos.pipe';
+import { isBoolean } from 'util';
 
 
 @Component({
@@ -14,11 +15,14 @@ import { DescontosPipe } from './pipes/descontos.pipe';
 })
 export class DescontosComponent implements OnInit, AfterViewInit {
 
-  constructor( private descontosService: DescontosService ) {
+  constructor( private descontosService: DescontosService, private el: ElementRef ) {
   }
 
   selectedOption: string;
   printedOption: string;
+
+  selectedOptionEstabVenda: string;
+  printedOptionEstabVenda: string;
 
   date = new Date();
   dataCabecalho: [];
@@ -37,12 +41,23 @@ export class DescontosComponent implements OnInit, AfterViewInit {
   // }
 
   applyFilter() {
-    this.dataSource.filter = this.selectedOption.trim().toLowerCase();
-    console.log(this.dataSource);
+    if( this.selectedOption  != null){
+      this.dataSource.filter = this.selectedOption.trim().toLowerCase();
+    }
+
+    
+
   }
 
   ngOnInit() {
     this.getDescontosTable();
+    this.dataSource.filterPredicate = function(data, filter: string): boolean {
+      return  data.sufixoCv.toLowerCase().includes(filter) ||
+              data.regiao.toLowerCase().includes(filter) ||
+              data.uf.toLowerCase().includes(filter) ||
+              data.codEstabel.toString() === filter ||
+              data.contrib.toString() === filter;
+    };
   }
 
   ngAfterViewInit() {
@@ -51,14 +66,17 @@ export class DescontosComponent implements OnInit, AfterViewInit {
   }
 
   ngOnChanges(changes: Descontos): void {
-    console.log(changes); 
-    
+  
   }
+// Filtros
 
-  print() {
+
+  filtro() {
     this.printedOption = this.selectedOption;
     this.applyFilter();
   }
+
+// Filtros FIM
 
   teste(value: string){
     const data = this.dataSource.filter = value.trim().toLowerCase();

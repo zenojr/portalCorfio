@@ -20,7 +20,6 @@ import { DescontosComponent } from './descontos/descontos.component';
 import { DescontosService } from './descontos.service';
 import { DescontosPipe } from './descontos/pipes/descontos.pipe';
 import { CookieService } from 'ngx-cookie-service';
-import { FiltroPorEstabelecimentoPipe } from './descontos/pipes/filtro-por-estabelecimento.pipe';
 import { LimpaSufixoCvPipe } from './descontos/pipes/limpa-sufixo-cv.pipe';
 import { GroupByPipe } from './descontos/pipes/group-by.pipe';
 import { GroupByCodEstabelPipe } from './descontos/pipes/group-by-cod-estabel.pipe';
@@ -28,25 +27,21 @@ import { GroupByContribPipe } from './descontos/pipes/group-by-contrib.pipe';
 import { GroupByUFPipe } from './descontos/pipes/group-by-uf.pipe';
 import { GroupByRegiaoPipe } from './descontos/pipes/group-by-regiao.pipe';
 import { GroupByNumeroTabPipe } from './descontos/pipes/group-by-numero-tab.pipe';
-
-
-
-
-
+import { FiltroEstabPipe } from './descontos/pipes/filtro-estab.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     DescontosComponent,
     DescontosPipe,
-    FiltroPorEstabelecimentoPipe,
     LimpaSufixoCvPipe,
     GroupByPipe,
     GroupByCodEstabelPipe,
     GroupByContribPipe,
     GroupByUFPipe,
     GroupByRegiaoPipe,
-    GroupByNumeroTabPipe
+    GroupByNumeroTabPipe,
+    FiltroEstabPipe
   ],
   imports: [
     BrowserModule,
