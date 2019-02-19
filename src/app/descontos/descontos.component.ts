@@ -38,6 +38,7 @@ export class DescontosComponent implements OnInit, AfterViewInit {
 
   applyFilter() {
     this.dataSource.filter = this.selectedOption.trim().toLowerCase();
+    console.log(this.dataSource);
   }
 
   ngOnInit() {
@@ -56,6 +57,7 @@ export class DescontosComponent implements OnInit, AfterViewInit {
 
   print() {
     this.printedOption = this.selectedOption;
+    this.applyFilter();
   }
 
   teste(value: string){

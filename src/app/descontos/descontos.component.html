@@ -44,15 +44,15 @@
       </mat-select>
     </mat-form-field>
   </div>
-  <div>
+  <div class="contSelect">
     <mat-form-field>
-      <mat-select [(ngModel)] ="selectedOption" (change)="applyFilter($event.target.value)" placeholder="Estado">
+      <mat-select [(ngModel)] ="selectedOption"  placeholder="Estado">
         <mat-option *ngFor="let item of dataSource.data | groupByUF" [value]="item.uf">
           {{item.uf}}
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <button (click)="print()">Click me</button>
+    <button (click)="print()">Aplicar Filtro</button>
     <p>Selected option: {{ selectedOption }}</p>
     <p>Button output: {{ printedOption }}</p>
   </div>
