@@ -15,7 +15,11 @@
               <td><strong>Usuário:</strong></td>
               <td>{{ user | uppercase }}</td>
             </tr>
-          </table>  
+            <tr>
+              <td><p>Filtro Selecionado: {{ selectedOption }}</p></td>
+              <td><p>Filtro Aplicado: {{ printedOption }}</p></td>
+            </tr>
+        </table>  
     </mat-grid-tile>
   </mat-grid-list>
 
@@ -75,8 +79,6 @@
   
 </div>
 <button mat-button (click)="filtro()">Aplicar Filtro</button> 
-<p>Filtro Selecionado: {{ selectedOption }}</p>
-<p>Filtro Aplicado: {{ printedOption }}</p>
 <div>
     <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
     

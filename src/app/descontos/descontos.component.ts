@@ -5,7 +5,6 @@ import { Descontos } from './descontos.model';
 import { DataSource } from '@angular/cdk/collections';
 import { BehaviorSubject, Observable} from 'rxjs';
 import { DescontosPipe } from './pipes/descontos.pipe';
-import { isBoolean } from 'util';
 
 
 @Component({
@@ -41,9 +40,11 @@ export class DescontosComponent implements OnInit, AfterViewInit {
   // }
 
   applyFilter() {
-    if( this.selectedOption  != null){
+    if( this.selectedOption  != null ){
       this.dataSource.filter = this.selectedOption.trim().toLowerCase();
-    }
+    } else {
+      this.dataSource.filter = this.selectedOption.trim().toLocaleLowerCase();
+    } 
 
     
 
@@ -52,11 +53,7 @@ export class DescontosComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.getDescontosTable();
     this.dataSource.filterPredicate = function(data, filter: string): boolean {
-      return  data.sufixoCv.toLowerCase().includes(filter) ||
-              data.regiao.toLowerCase().includes(filter) ||
-              data.uf.toLowerCase().includes(filter) ||
-              data.codEstabel.toString() === filter ||
-              data.contrib.toString() === filter;
+      return data.uf.toLowerCase().includes(filter) || data.codEstabel.toString() === filter;
     };
   }
 
