@@ -2,6 +2,7 @@ import { Component, OnChanges, OnInit, ViewChild, AfterViewInit, ElementRef } fr
 import { MatSort, MatPaginator, MatTableDataSource, MatFormFieldControl, MatSelect, MatSnackBar } from '@angular/material';
 import { DescontosService } from '../descontos.service';
 import { Descontos } from './descontos.model';
+import { FilterAdd } from './filterAdd.model';
 
 @Component({
   selector: 'app-descontos',
@@ -31,37 +32,70 @@ export class DescontosComponent implements OnInit, AfterViewInit {
   dataSource = new MatTableDataSource<Descontos>();
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild('filter') filter: ElementRef;
-
+  // @ViewChild('filter') filter: ElementRef;
+  
   // applyFilter(filterValue: string) {
   //   this.dataSource.filter = filterValue.trim().toLowerCase();
   // }
 
-  applyFilter() {
-    if ( this.selectedOption  != null ) {
-      this.dataSource.filter = this.selectedOption.trim().toLowerCase();
-    }
-  }
+  // applyFilter() {
+  //   if ( this.filterAdd  != null ) {
+  //     const filterAddString = this.filterAdd.toString().trim().toLowerCase();
+  //     console.log(filterAddString);
+  //     return this.dataSource.filter = filterAddString;
+  //     // console.log(filterAddString);
+  //   }
+  // }
 
   ngOnInit() {
     this.getDescontosTable();
-    this.dataSource.filterPredicate = function(data, filter: string): boolean {
-      return  data.codEstabel.toString() === filter ||
-              data.regiao.trim().toLowerCase().includes(filter) ||
-              data.uf.toLowerCase().includes(filter);
-    };
+    this.callFilterPredicate();
+    
   }
 
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
   }
-
-  ngOnChanges(changes: Descontos): void {
-  
-  }
 // Filtros
 
+  callFilterPredicate(){
+    this.dataSource.filterPredicate = function(data, filtro: string): boolean {
+      //criar uma function para retornar os dados aqui
+              let result = 
+              data.regiao.trim().toLowerCase().includes(filtro) ||
+              data.uf.toLowerCase().includes(filtro)
+              // data.codEstabel.toString().includes(filtro);
+
+              console.log(result);
+              
+              return result;
+    };
+  }
+
+  applyFilter() {
+    if ( this.filterAdd  != null ) {
+      const filterAddString = this.filterAdd.toString().trim().toLowerCase();
+      console.log('Saida FilterADDString: ' + filterAddString);
+      return this.dataSource.filter = filterAddString;
+      // console.log(filterAddString);
+    }
+  }
+
+  addFiltro() {
+    let selectRecebido = this.selectedOption;
+    if( this.selectedOption !== null && this.selectedOption !== undefined ) {
+      this.filterAdd.push(selectRecebido);
+      console.log(this.filterAdd);
+    } else {
+        this.snackBar.open( 'Filtro Vazio', '[x]Fechar', {
+          duration: 2000,
+        });
+    }
+
+    selectRecebido = null;
+    this.selectedOption = null;
+  }
 
   filtro() {
     this.printedOption = this.selectedOption;
@@ -76,21 +110,6 @@ export class DescontosComponent implements OnInit, AfterViewInit {
     this.snackBar.open( 'Filtro limpo com Sucesso!', '[x]Fechar', {
       duration: 2000,
     });
-  }
-
-  addFiltro(){
-    let selectRecebido = this.selectedOption;
-    if( this.selectedOption !== null && this.selectedOption !== undefined ) {
-      this.filterAdd.push(selectRecebido);
-      console.log(this.filterAdd);
-      selectRecebido = null;
-      this.selectedOption = null;
-    } else {
-        this.snackBar.open( 'Filtro Vazio', '[x]Fechar', {
-          duration: 2000,
-        });
-    }
-    
   }
 
 // Filtros FIM

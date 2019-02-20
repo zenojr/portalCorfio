@@ -15,19 +15,18 @@
               <td><strong>Usuário:</strong></td>
               <td>{{ user | uppercase }}</td>
             </tr>
-            <tr>
-              <td><p>Filtro Selecionado: {{ filterAdd }}</p></td>
-              <ul *ngFor='let item of filterAdd'>
-                <li> {{ item }} </li>
-              </ul>
-              <td><p>Filtro Aplicado: {{ printedOption }}</p></td>
-            </tr>
         </table>  
     </mat-grid-tile>
   </mat-grid-list>
+<div class='filtrosDetails'> 
+    <h3>Filtros Adicionados:</h3>
+    <ul class='ulFiltros' *ngFor='let item of filterAdd'>
+      <li> {{ item }} </li>
+    </ul>
 
-  <h2>Filtros</h2>
-<div class="combobox-forms-main">
+</div>
+  
+<div class="comboboxFormsMain">
   <!-- <div>
     <mat-form-field>
       <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtro Geral">

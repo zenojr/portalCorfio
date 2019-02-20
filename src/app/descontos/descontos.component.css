@@ -7,11 +7,20 @@ body {
   height: auto;
 }
 
-.combobox-forms-main{
+.comboboxFormsMain{
   display: flex;
   flex-direction: row;
 }
 
 .logo{
   width: 100px;
+}
+
+.filtrosDetails {
+  display: flex;
+}
+
+.ulFiltros {
+  display: inline;
+  list-style-type: square;
 }
