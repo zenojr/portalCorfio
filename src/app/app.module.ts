@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-
 // REGIONALIZACAO DA APP
 import {NgModule, LOCALE_ID} from '@angular/core';
 import localept from '@angular/common/locales/pt';
@@ -11,7 +10,6 @@ registerLocaleData(localept, 'pt');
 
 // my imports
 import { FormsModule } from '@angular/forms'
-import { HttpModule, Response } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';

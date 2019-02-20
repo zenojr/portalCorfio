@@ -2,10 +2,6 @@ import { Component, OnChanges, OnInit, ViewChild, AfterViewInit, ElementRef } fr
 import { MatSort, MatPaginator, MatTableDataSource, MatFormFieldControl, MatSelect, MatSnackBar } from '@angular/material';
 import { DescontosService } from '../descontos.service';
 import { Descontos } from './descontos.model';
-import { DataSource } from '@angular/cdk/collections';
-import { BehaviorSubject, Observable} from 'rxjs';
-import { DescontosPipe } from './pipes/descontos.pipe';
-
 
 @Component({
   selector: 'app-descontos',
