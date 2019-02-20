@@ -1,7 +1,7 @@
 
 <mat-grid-list cols="3" rowHeight="5:2">
     <mat-grid-tile>
-      <div class="logo" fxLayout="row" >
+      <div class="logo">
           <img src="../../assets/img/pt_logoCorfio.png" alt="">  
       </div>
     </mat-grid-tile>
@@ -16,7 +16,10 @@
               <td>{{ user | uppercase }}</td>
             </tr>
             <tr>
-              <td><p>Filtro Selecionado: {{ selectedOption }}</p></td>
+              <td><p>Filtro Selecionado: {{ filterAdd }}</p></td>
+              <ul *ngFor='let item of filterAdd'>
+                <li> {{ item }} </li>
+              </ul>
               <td><p>Filtro Aplicado: {{ printedOption }}</p></td>
             </tr>
         </table>  
@@ -70,7 +73,7 @@
     <mat-form-field>
       <mat-select [(ngModel)] = "selectedOption" placeholder="Numero Tab">
         <mat-option *ngFor="let item of dataSource.data | groupByNumeroTab" [value]="item.sufixoCv">
-          {{item.sufixoCv}}
+          {{item.sufixoCv | slice:0:7 }}
         </mat-option>
       </mat-select>
     </mat-form-field>
@@ -78,7 +81,9 @@
   </div>
   
 </div>
-<button mat-button (click)="filtro()">Aplicar Filtro</button> 
+<button mat-button color='primary' (click)="filtro()">Aplicar Filtro</button>
+<button mat-button color='accent' (click)="addFiltro()">Add Filtro</button> 
+<button mat-button color="warn" (click)="limpaFiltro()" >Limpar Filtro</button>
 <div>
     <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
     

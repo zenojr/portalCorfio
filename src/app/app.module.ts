@@ -28,6 +28,7 @@ import { GroupByUFPipe } from './descontos/pipes/group-by-uf.pipe';
 import { GroupByRegiaoPipe } from './descontos/pipes/group-by-regiao.pipe';
 import { GroupByNumeroTabPipe } from './descontos/pipes/group-by-numero-tab.pipe';
 import { FiltroEstabPipe } from './descontos/pipes/filtro-estab.pipe';
+import { LimpaSufixoSelectPipe } from './descontos/pipes/limpa-sufixo-select.pipe';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { FiltroEstabPipe } from './descontos/pipes/filtro-estab.pipe';
     GroupByUFPipe,
     GroupByRegiaoPipe,
     GroupByNumeroTabPipe,
-    FiltroEstabPipe
+    FiltroEstabPipe,
+    LimpaSufixoSelectPipe
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,5 @@
 import { Component, OnChanges, OnInit, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
-import { MatSort, MatPaginator, MatTableDataSource, MatFormFieldControl, MatSelect } from '@angular/material';
+import { MatSort, MatPaginator, MatTableDataSource, MatFormFieldControl, MatSelect, MatSnackBar } from '@angular/material';
 import { DescontosService } from '../descontos.service';
 import { Descontos } from './descontos.model';
 import { DataSource } from '@angular/cdk/collections';
@@ -14,11 +14,13 @@ import { DescontosPipe } from './pipes/descontos.pipe';
 })
 export class DescontosComponent implements OnInit, AfterViewInit {
 
-  constructor( private descontosService: DescontosService, private el: ElementRef ) {
+  constructor( private descontosService: DescontosService, private el: ElementRef, private snackBar: MatSnackBar ) {
   }
 
   selectedOption: string;
   printedOption: string;
+
+  filterAdd: string[] = [];
 
   selectedOptionEstabVenda: string;
   printedOptionEstabVenda: string;
@@ -40,20 +42,17 @@ export class DescontosComponent implements OnInit, AfterViewInit {
   // }
 
   applyFilter() {
-    if( this.selectedOption  != null ){
+    if ( this.selectedOption  != null ) {
       this.dataSource.filter = this.selectedOption.trim().toLowerCase();
-    } else {
-      this.dataSource.filter = this.selectedOption.trim().toLocaleLowerCase();
-    } 
-
-    
-
+    }
   }
 
   ngOnInit() {
     this.getDescontosTable();
     this.dataSource.filterPredicate = function(data, filter: string): boolean {
-      return data.uf.toLowerCase().includes(filter) || data.codEstabel.toString() === filter;
+      return  data.codEstabel.toString() === filter ||
+              data.regiao.trim().toLowerCase().includes(filter) ||
+              data.uf.toLowerCase().includes(filter);
     };
   }
 
@@ -71,6 +70,31 @@ export class DescontosComponent implements OnInit, AfterViewInit {
   filtro() {
     this.printedOption = this.selectedOption;
     this.applyFilter();
+  }
+
+  limpaFiltro(){
+    this.printedOption = null;
+    this.selectedOption = null;
+    this.filterAdd = [];
+    this.applyFilter();
+    this.snackBar.open( 'Filtro limpo com Sucesso!', '[x]Fechar', {
+      duration: 2000,
+    });
+  }
+
+  addFiltro(){
+    let selectRecebido = this.selectedOption;
+    if( this.selectedOption !== null && this.selectedOption !== undefined ) {
+      this.filterAdd.push(selectRecebido);
+      console.log(this.filterAdd);
+      selectRecebido = null;
+      this.selectedOption = null;
+    } else {
+        this.snackBar.open( 'Filtro Vazio', '[x]Fechar', {
+          duration: 2000,
+        });
+    }
+    
   }
 
 // Filtros FIM
