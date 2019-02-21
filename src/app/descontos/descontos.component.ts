@@ -60,6 +60,7 @@ export class DescontosComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.getDescontosTable();
 
+    
     // filter codEstabel
     this.estabVdaFilter.valueChanges
     .subscribe(
@@ -123,6 +124,17 @@ export class DescontosComponent implements OnInit, AfterViewInit {
     };
     return filterFunction;
   }
+
+  limparFiltro(){
+    this.estabVdaFilter.reset('');
+    this.estabVdaFilter.reset('');
+    this.ufFilter.reset('');
+    this.regiaoFilter.reset('');
+    this.contribFilter.reset('');
+    this.tabFilter.reset('');
+
+  }
+
 
 // Filtros FIM
 

@@ -1,11 +1,36 @@
-table {
-    width: 100%;
-  }
-  
 body {
   max-width: 100%;
   height: auto;
+  
 }
+
+.tableDescontos table{
+  width: 100%;
+  overflow: auto;
+}
+
+.tableDescontos td{
+  padding-right: 10px;
+}
+.filter{
+  display: flex;
+  flex-direction: row;
+}
+
+/* .filter {
+  width: 30px;
+}
+
+
+.filter input {
+  width: 30px;  
+} */
+
+
+
+
+
+
 
 .comboboxFormsMain{
   display: flex;

@@ -5,7 +5,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource, MatFormFieldModule, MatInputModule, MatGridListModule,
-MatToolbarModule, MatSelectModule, MatSnackBarModule } from '@angular/material';
+MatToolbarModule, MatSelectModule, MatSnackBarModule, MatIconModule } from '@angular/material';
 
 
 
@@ -22,7 +22,8 @@ MatToolbarModule, MatSelectModule, MatSnackBarModule } from '@angular/material';
   MatGridListModule,
   MatToolbarModule,
   MatSelectModule,
-  MatSnackBarModule
+  MatSnackBarModule,
+  MatIconModule
   ],
   exports: [
   MatTableModule,
@@ -32,7 +33,8 @@ MatToolbarModule, MatSelectModule, MatSnackBarModule } from '@angular/material';
   MatGridListModule,
   MatToolbarModule,
   MatSelectModule,
-  MatSnackBarModule
+  MatSnackBarModule,
+  MatIconModule
   ]
 })
 export class MaterialModule { }
