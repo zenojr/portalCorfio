@@ -99,7 +99,7 @@
           <th mat-header-cell *matHeaderCellDef> 
           Estab.Vda. 
           <mat-form-field class="filter">
-            <mat-label>Filtrar</mat-label>
+            <mat-label>Filtro</mat-label>
             <input matInput [formControl]="estabVdaFilter">
           </mat-form-field>
           </th>
@@ -110,7 +110,7 @@
           <th mat-header-cell *matHeaderCellDef>
             Estado
             <mat-form-field class="filter">
-                <mat-label>Filtrar</mat-label>
+                <mat-label>Filtro</mat-label>
                 <input matInput [formControl]="ufFilter">
             </mat-form-field>
           </th>
@@ -118,7 +118,13 @@
         </ng-container>
         
         <ng-container matColumnDef="regiao">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Região </th>
+          <th mat-header-cell *matHeaderCellDef>
+            Região
+            <mat-form-field class="filter">
+                <mat-label>Filtro</mat-label>
+                <input matInput [formControl]="regiaoFilter">
+            </mat-form-field>
+          </th>
           <td mat-cell *matCellDef="let item"> {{item.regiao}} </td>
         </ng-container>
       

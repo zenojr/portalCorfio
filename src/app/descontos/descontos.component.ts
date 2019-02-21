@@ -14,6 +14,7 @@ export class DescontosComponent implements OnInit, AfterViewInit {
 
   estabVdaFilter = new FormControl('');
   ufFilter = new FormControl('');
+  regiaoFilter = new FormControl('');
 
   filterValues = {
     codEstabel: '',
@@ -24,16 +25,12 @@ export class DescontosComponent implements OnInit, AfterViewInit {
   }
 
   constructor( private descontosService: DescontosService, private el: ElementRef, private snackBar: MatSnackBar ) {
-
     this.dataSource.filterPredicate = this.createFilter();
   }
 
-
   selectedOption: string;
   printedOption: string;
-
   filterAdd: string[] = [];
-
   date = new Date();
   descontos: Descontos[];
   user = this.descontosService.getUser();
@@ -48,7 +45,6 @@ export class DescontosComponent implements OnInit, AfterViewInit {
   // applyFilter(filterValue: string) {
   //   this.dataSource.filter = filterValue.trim().toLowerCase();
   // }
-
 
   // applyFilter() {
   //   if ( this.filterAdd  != null ) {
@@ -80,6 +76,15 @@ export class DescontosComponent implements OnInit, AfterViewInit {
       }
     );
 
+    // filter Regiao
+    this.regiaoFilter.valueChanges
+    .subscribe(
+      regiao => {
+        this.filterValues.regiao = regiao;
+        this.dataSource.filter = JSON.stringify(this.filterValues);
+      }
+    );
+
   }
 
   ngAfterViewInit() {
@@ -91,68 +96,10 @@ export class DescontosComponent implements OnInit, AfterViewInit {
     let filterFunction = function(data, filter): boolean {
       let searchTerms = JSON.parse(filter);
       return data.codEstabel.toLowerCase().indexOf(searchTerms.codEstabel) !== -1
-          && data.uf.toLowerCase().indexOf(searchTerms.uf) !== -1;
+          && data.uf.toLowerCase().indexOf(searchTerms.uf) !== -1
+          && data.regiao.toLowerCase().indexOf(searchTerms.regiao) !== -1 ;
     }
     return filterFunction;
-  }
-
-
-
-  callFilterPredicate(){
-    this.dataSource.filterPredicate = (data, filtro) => {
-      const dataStr = data.codEstabel + data.uf;
-      // console.log( dataStr );
-      return dataStr.indexOf(filtro) != -1;
-    }
-
-    // this.dataSource.filterPredicate = function(data, filtro: string): boolean {
-    //   console.log('Call: ' + filtro);
-    //   // criar uma function para retornar os dados aqui
-    //   let result =  data.regiao.trim().toLowerCase().includes(filtro)||
-    //                 data.uf.toLowerCase().includes(filtro) ||
-    //                 data.codEstabel.toString() === filtro;
-
-    //                 console.log(result);
-    //   return result;
-    // };
-  }
-
-  applyFilter() {
-    if ( this.filterAdd  != null ) {
-      const filterAddString = this.filterAdd.toString().trim().toLowerCase();
-      console.log('Apply FilterADDString: ' + filterAddString);
-      return this.dataSource.filter = filterAddString;
-      // console.log(filterAddString);
-    }
-  }
-
-  addFiltro() {
-    let selectRecebido = this.selectedOption;
-    if( this.selectedOption !== null && this.selectedOption !== undefined ) {
-      this.filterAdd.push(selectRecebido);
-      console.log(this.filterAdd);
-    } else {
-        this.snackBar.open( 'Filtro Vazio', '[x]Fechar', {
-          duration: 2000,
-        });
-    }
-    selectRecebido = null;
-    this.selectedOption = null;
-  }
-
-  filtro() {
-    this.callFilterPredicate();
-    this.applyFilter();
-  }
-
-  limpaFiltro(){
-    this.printedOption = null;
-    this.selectedOption = null;
-    this.filterAdd = [];
-    this.applyFilter();
-    this.snackBar.open( 'Filtro limpo com Sucesso!', '[x]Fechar', {
-      duration: 2000,
-    });
   }
 
 // Filtros FIM
