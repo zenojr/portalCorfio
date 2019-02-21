@@ -15,6 +15,8 @@ export class DescontosComponent implements OnInit, AfterViewInit {
   estabVdaFilter = new FormControl('');
   ufFilter = new FormControl('');
   regiaoFilter = new FormControl('');
+  contribFilter = new FormControl('');
+  tabFilter = new FormControl('');
 
   filterValues = {
     codEstabel: '',
@@ -85,6 +87,24 @@ export class DescontosComponent implements OnInit, AfterViewInit {
       }
     );
 
+    // filter Contrib
+    this.contribFilter.valueChanges
+    .subscribe(
+      contrib => {
+        this.filterValues.contrib = contrib;
+        this.dataSource.filter = JSON.stringify(this.filterValues);
+      }
+    );
+
+    // filter Tab
+    this.tabFilter.valueChanges
+    .subscribe(
+      sufixoCv => {
+        this.filterValues.sufixoCv = sufixoCv;
+        this.dataSource.filter = JSON.stringify(this.filterValues);
+      }
+    );
+
   }
 
   ngAfterViewInit() {
@@ -97,8 +117,10 @@ export class DescontosComponent implements OnInit, AfterViewInit {
       let searchTerms = JSON.parse(filter);
       return data.codEstabel.toLowerCase().indexOf(searchTerms.codEstabel) !== -1
           && data.uf.toLowerCase().indexOf(searchTerms.uf) !== -1
-          && data.regiao.toLowerCase().indexOf(searchTerms.regiao) !== -1 ;
-    }
+          && data.regiao.toLowerCase().indexOf(searchTerms.regiao) !== -1
+          && data.contrib.toString().toLowerCase().indexOf(searchTerms.contrib) !== -1
+          && data.sufixoCv.toLowerCase().indexOf(searchTerms.sufixoCv) !== -1 ;
+    };
     return filterFunction;
   }
 
