@@ -12,8 +12,22 @@ import { FormControl } from '@angular/forms';
 })
 export class DescontosComponent implements OnInit, AfterViewInit {
 
-  constructor( private descontosService: DescontosService, private el: ElementRef, private snackBar: MatSnackBar ) {
+  estabVdaFilter = new FormControl('');
+  ufFilter = new FormControl('');
+
+  filterValues = {
+    codEstabel: '',
+    contrib: '',
+    uf: '',
+    regiao: '',
+    sufixoCv: ''
   }
+
+  constructor( private descontosService: DescontosService, private el: ElementRef, private snackBar: MatSnackBar ) {
+
+    this.dataSource.filterPredicate = this.createFilter();
+  }
+
 
   selectedOption: string;
   printedOption: string;
@@ -47,7 +61,25 @@ export class DescontosComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.getDescontosTable();
-    // this.callFilterPredicate();
+
+    // filter codEstabel
+    this.estabVdaFilter.valueChanges
+    .subscribe(
+      codEstabel => {
+        this.filterValues.codEstabel = codEstabel;
+        this.dataSource.filter = JSON.stringify(this.filterValues);
+      }
+    );
+
+    // filter UF
+    this.ufFilter.valueChanges
+    .subscribe(
+      uf => {
+        this.filterValues.uf = uf;
+        this.dataSource.filter = JSON.stringify(this.filterValues);
+      }
+    );
+
   }
 
   ngAfterViewInit() {
@@ -55,6 +87,15 @@ export class DescontosComponent implements OnInit, AfterViewInit {
     this.dataSource.paginator = this.paginator;
   }
 // Filtros
+  createFilter(): (data: any, filter: string) => boolean {
+    let filterFunction = function(data, filter): boolean {
+      let searchTerms = JSON.parse(filter);
+      return data.codEstabel.toLowerCase().indexOf(searchTerms.codEstabel) !== -1
+          && data.uf.toLowerCase().indexOf(searchTerms.uf) !== -1;
+    }
+    return filterFunction;
+  }
+
 
 
   callFilterPredicate(){
