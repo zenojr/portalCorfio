@@ -27,12 +27,15 @@
 </div>
   
 <div class="comboboxFormsMain">
-  <!-- <div>
+  <div>
     <mat-form-field>
-      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtro Geral">
+      <input matInput (keyup)="callFilterPredicate($event.target.value)" placeholder="Filtro Geral">
     </mat-form-field>
-  </div> -->
-  <div >
+  </div>
+
+  
+  <div>
+  
     <mat-form-field>
       <mat-select [(ngModel)] = "selectedOption" placeholder="Estab.Vda">
         <mat-option *ngFor="let item of dataSource.data | groupByCodEstabel" [value]="item.codEstabel">
@@ -80,17 +83,27 @@
   </div>
   
 </div>
-<button mat-button color='primary' (click)="filtro()">Aplicar Filtro</button>
-<button mat-button color='accent' (click)="addFiltro()">Add Filtro</button> 
-<button mat-button color="warn" (click)="limpaFiltro()" >Limpar Filtro</button>
+
+<div>
+    <button mat-button color='primary' (click)="filtro()">Aplicar Filtro</button>
+    <button mat-button color='accent' (click)="addFiltro()">Add Filtro</button> 
+    <button mat-button color="warn" (click)="limpaFiltro()" >Limpar Filtro</button>    
+</div>
+
 <div>
     <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
     
         <!--- Note that these columns can be defined in any order.
               The actual rendered columns are set as a property on the row definition" -->
-      
+
         <ng-container matColumnDef="codEstabel" >
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Estab.Vda. </th>
+          <th mat-header-cell *matHeaderCellDef> 
+          Estab.Vda. 
+          <mat-form-field class="filter" floatLabel="never">
+              <mat-label>Search</mat-label>
+              <input matInput [formControl]="estabVdaFilter">
+            </mat-form-field>
+          </th>
           <td mat-cell *matCellDef="let item"> {{item.codEstabel }} </td>
         </ng-container>
         

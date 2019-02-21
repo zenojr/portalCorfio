@@ -9,11 +9,13 @@ MatToolbarModule, MatSelectModule, MatSnackBarModule } from '@angular/material';
 
 
 
+
+
 @NgModule({
   declarations: [],
   imports: [
-	CommonModule,
-	MatTableModule,
+  CommonModule,
+  MatTableModule,
   MatButtonModule,
   MatFormFieldModule,
   MatInputModule,
@@ -23,7 +25,7 @@ MatToolbarModule, MatSelectModule, MatSnackBarModule } from '@angular/material';
   MatSnackBarModule
   ],
   exports: [
-	MatTableModule,
+  MatTableModule,
   MatButtonModule,
   MatFormFieldModule,
   MatInputModule,

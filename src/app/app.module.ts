@@ -9,7 +9,6 @@ import {HashLocationStrategy, LocationStrategy, registerLocaleData} from '@angul
 registerLocaleData(localept, 'pt');
 
 // my imports
-import { FormsModule } from '@angular/forms'
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
@@ -27,6 +26,11 @@ import { GroupByRegiaoPipe } from './descontos/pipes/group-by-regiao.pipe';
 import { GroupByNumeroTabPipe } from './descontos/pipes/group-by-numero-tab.pipe';
 import { FiltroEstabPipe } from './descontos/pipes/filtro-estab.pipe';
 import { LimpaSufixoSelectPipe } from './descontos/pipes/limpa-sufixo-select.pipe';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+
+
+
 
 @NgModule({
   declarations: [
@@ -53,7 +57,8 @@ import { LimpaSufixoSelectPipe } from './descontos/pipes/limpa-sufixo-select.pip
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     DescontosService,
