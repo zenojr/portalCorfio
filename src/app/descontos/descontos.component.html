@@ -1,3 +1,5 @@
+<!-- <mat-spinner></mat-spinner> -->
+
 <div class="container">
   <mat-grid-list [cols]="breakpoint" rowHeight="4:1.5" (window:resize)="onResize($event)">
     <mat-grid-tile class="logo">
@@ -108,11 +110,16 @@
     <ng-container matColumnDef="codEstabel" >
       <th mat-header-cell *matHeaderCellDef> 
         <mat-card class="matCardFilter" >
-          <mat-card-title class="textHeaderTable">Estab.Vda</mat-card-title>
+          <!-- <mat-card-title class="textHeaderTable">Estab.Vda</mat-card-title> -->
           <mat-card-content>
             <mat-form-field  class="filter">
-              <mat-label>Filtrar</mat-label>
-              <input matInput [formControl]="estabVdaFilter">  
+              <mat-label>Estb.Vda</mat-label>
+              <!-- <input matInput [formControl]="estabVdaFilter">   -->
+              <mat-select [formControl] = "estabVdaFilter" placeholder="Estab.Vda">
+                  <mat-option *ngFor="let item of dataSource.data | groupByCodEstabel" [value]="item.codEstabel">
+                    {{item.codEstabel }}
+                  </mat-option>
+              </mat-select>
             </mat-form-field>
           </mat-card-content>
         </mat-card>
@@ -126,11 +133,16 @@
     <ng-container matColumnDef="uf">
       <th mat-header-cell *matHeaderCellDef>
         <mat-card class="matCardFilter" >
-          <mat-card-title class="textHeaderTable"> Estado </mat-card-title>
+          <!-- <mat-card-title class="textHeaderTable"> Estado </mat-card-title> -->
           <mat-card-content>
             <mat-form-field class="filter">
-              <mat-label>Filtrar</mat-label>
-              <input matInput [formControl]="ufFilter">
+              <mat-label>Estado</mat-label>
+              <!-- <input matInput [formControl]="ufFilter"> -->
+              <mat-select [formControl] = "ufFilter" placeholder="Estado">
+                  <mat-option *ngFor="let item of dataSource.data | groupByUF" [value]="item.uf">
+                    {{item.uf }}
+                  </mat-option>
+              </mat-select>
             </mat-form-field>
           </mat-card-content>
         </mat-card>
@@ -142,11 +154,16 @@
     <ng-container matColumnDef="regiao">
       <th mat-header-cell *matHeaderCellDef>
         <mat-card class="matCardFilter" >
-          <mat-card-title class="textHeaderTable">Região</mat-card-title>
+          <!-- <mat-card-title class="textHeaderTable">Região</mat-card-title> -->
           <mat-card-content>
             <mat-form-field class="filter">
-              <mat-label>Filtrar</mat-label>
-              <input matInput [formControl]="regiaoFilter">
+              <mat-label>Região</mat-label>
+              <!-- <input matInput [formControl]="regiaoFilter"> -->
+              <mat-select [formControl] = "regiaoFilter" placeholder="Região">
+                  <mat-option *ngFor="let item of dataSource.data | groupByRegiao" [value]="item.regiao">
+                    {{item.regiao }}
+                  </mat-option>
+              </mat-select>
             </mat-form-field>
           </mat-card-content>
         </mat-card>
@@ -200,11 +217,16 @@
       <th mat-header-cell *matHeaderCellDef>
         <mat-card class="matCardFilter" >
           <mat-card-content>
-            <mat-card-title class="textHeaderTable">Num.TAB</mat-card-title>
+            <!-- <mat-card-title class="textHeaderTable">Num.TAB</mat-card-title> -->
             <mat-card-content>
               <mat-form-field class="filter">
-                <mat-label>Filtrar</mat-label>
-                <input matInput [formControl]="tabFilter">
+                <mat-label>Num.TAB</mat-label>
+                <!-- <input matInput [formControl]="tabFilter"> -->
+                <mat-select [formControl] = "tabFilter" placeholder="Tabela">
+                    <mat-option *ngFor="let item of dataSource.data | groupByNumeroTab" [value]="item.sufixoCv">
+                      {{item.sufixoCv }}
+                    </mat-option>
+                </mat-select>
               </mat-form-field>
             </mat-card-content>
           </mat-card-content>

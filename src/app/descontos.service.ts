@@ -4,6 +4,7 @@ import { Descontos } from './descontos/descontos.model';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpEvent, HttpInterceptor, HttpHandler, HttpRequest } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
+import { catchError, map, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class DescontosService {
   private descontosURL = 'http://192.168.0.7:8080/cgi-bin/wspd_cgi.sh/WService=corfio/wep/we0040041.p?usuario=';
 
   constructor( private http: HttpClient, private cookieService: CookieService ) {
-    console.log('Desconto service run!');
+    console.log('APP Run!');
   }
 
   getdataCabecalho() {
@@ -22,7 +23,7 @@ export class DescontosService {
 
   getDescontos(): Observable<Descontos[]> {
     const headers = new HttpHeaders();
-    return this.http.get<Descontos[]>(this.descontosURL + this.user , {headers});
+    return this.http.get<Descontos[]>(this.descontosURL + this.user , {headers})
   }
 
   getUser() {

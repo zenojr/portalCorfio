@@ -14,9 +14,9 @@ import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
   styleUrls: ['./descontos.component.css']
 })
 export class DescontosComponent implements OnInit, AfterViewInit {
-
+  
   breakpoint: number;
-
+  
   estabVdaFilter = new FormControl('');
   ufFilter = new FormControl('');
   regiaoFilter = new FormControl('');
@@ -31,24 +31,18 @@ export class DescontosComponent implements OnInit, AfterViewInit {
     sufixoCv: ''
   };
   
-  constructor( public breakpointObserver: BreakpointObserver,
-    private ngZone: NgZone,
+  constructor( public breakpointObserver: BreakpointObserver,private ngZone: NgZone,
     private descontosService: DescontosService,
     private el: ElementRef,
     private snackBar: MatSnackBar ) {
       this.dataSource.filterPredicate = this.createFilter();
     }
     
-    selectedOption: string;
-    printedOption: string;
-    filterAdd: string[] = [];
+    
     date = new Date();
     descontos: Descontos[];
     user = this.descontosService.getUser();
-    displayedColumns: string[] = ['codEstabel',
-    'uf',
-    'regiao',
-    'contrib',
+    displayedColumns: string[] = ['codEstabel', 'uf', 'regiao', 'contrib',
     'fmFio',
     'fmParalelo',
     'fmPp',
@@ -61,12 +55,11 @@ export class DescontosComponent implements OnInit, AfterViewInit {
   dataSource = new MatTableDataSource<Descontos>();
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  
+
   ngOnInit() {
     this.breakpoint = (window.innerWidth <= 800) ? 1 : 3;
     this.getDescontosTable();
-    
-    
+
     // filter codEstabel
     this.estabVdaFilter.valueChanges
     .subscribe(
@@ -79,7 +72,7 @@ export class DescontosComponent implements OnInit, AfterViewInit {
       this.ufFilter.valueChanges
       .subscribe(
         uf => {
-          this.filterValues.uf = uf;
+          this.filterValues.uf = uf.toLowerCase();
           this.dataSource.filter = JSON.stringify(this.filterValues);
         }
         );
@@ -87,7 +80,7 @@ export class DescontosComponent implements OnInit, AfterViewInit {
         this.regiaoFilter.valueChanges
         .subscribe(
           regiao => {
-            this.filterValues.regiao = regiao;
+            this.filterValues.regiao = regiao.toLowerCase();
             this.dataSource.filter = JSON.stringify(this.filterValues);
           }
           );
@@ -95,7 +88,7 @@ export class DescontosComponent implements OnInit, AfterViewInit {
           this.contribFilter.valueChanges
           .subscribe(
             contrib => {
-              this.filterValues.contrib = contrib;
+              this.filterValues.contrib = contrib.toLowerCase();
               this.dataSource.filter = JSON.stringify(this.filterValues);
             }
             );
@@ -103,21 +96,21 @@ export class DescontosComponent implements OnInit, AfterViewInit {
             this.tabFilter.valueChanges
             .subscribe(
               sufixoCv => {
-                this.filterValues.sufixoCv = sufixoCv;
+                this.filterValues.sufixoCv = sufixoCv.toLowerCase();
                 this.dataSource.filter = JSON.stringify(this.filterValues);
               }
               );
             }
-            
+
             ngAfterViewInit() {
               this.dataSource.sort = this.sort;
               this.dataSource.paginator = this.paginator;
             }
-            
+
             onResize(event) {
               this.breakpoint = (event.target.innerWidth <= 400) ? 1 : 3;
             }
-            
+
             // Filtros
             createFilter(): (data: any, filter: string) => boolean {
               const filterFunction = function(data, filter): boolean {
@@ -139,7 +132,7 @@ export class DescontosComponent implements OnInit, AfterViewInit {
               this.contribFilter.reset('');
               this.tabFilter.reset('');
               
-              this.snackBar.open( 'Filtro Limpo', '[x]Fechar', {
+              this.snackBar.open( 'Filtro limpo com sucesso', '[x]Fechar', {
                 duration: 2000});
               }
               

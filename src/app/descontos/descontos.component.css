@@ -7,25 +7,18 @@ body {
 
 .matCardFilter {
   align-content: center;
-  height: 50px;
-  width: 4rem;
-}
-
-mat-gri-list {
-  
-  align-content: flex-start;
+  height: 25px;
+  width: auto;
+  max-width: 90px;
 }
 
 table {
   width: 100%;
+  text-align: center;
 }
 
 .filter{
-  width: 3rem;
-}
-
-.headerTable {
-  padding-top: 10px; 
+  width: 5rem;
 }
 
 table td{
