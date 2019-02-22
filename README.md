@@ -1,11 +1,17 @@
-# Developer
+## zenofranca.com
 
-this project was developed by Zeno França Jr, More info: `www.zenofranca.com`
+this project was developed by `Zeno França Jr`, More info at: `www.zenofranca.com`
 
 # Portal
+This project was developed to show info about discount reference products from industry
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.2.
+## Tecnologies
+
+`Angular 7`
+`Angular Material`
+`Progress`
 
 ## Development server
+
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
