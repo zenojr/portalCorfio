@@ -1,5 +1,5 @@
 
-<mat-grid-list [cols]="breakpoint" rowHeight="1:0.5" (window:resize)="onResize($event)">
+<mat-grid-list [cols]="breakpoint" rowHeight="4:1.5" (window:resize)="onResize($event)">
   <mat-grid-tile class="logo">
     <img src='../../assets/img/pt_logoCorfio.png'>
   </mat-grid-tile>
@@ -17,7 +17,7 @@
   </mat-grid-tile>
   <mat-grid-tile>
     <table>
-        <th>Adicionais Possiveis:</th>
+      <th>Adicionais Possiveis:</th>
       <tr>
         <td>+ 4% no flex 2,50 mm</td>
       </tr>
@@ -31,29 +31,11 @@
   </mat-grid-tile>
 </mat-grid-list>
 
-<!-- <mat-grid-list cols="3" rowHeight="6:1">
-  <mat-grid-tile class="logo">
-    <img src='../../assets/img/pt_logoCorfio.png'>
-  </mat-grid-tile>
-  <mat-grid-tile>
-    <table class='headerTableTop'>
-      <tr>
-        <td><strong>Data:</strong></td>
-        <td>{{ date | date: "short"  }}</td>
-      </tr>
-      <tr>
-        <td><strong>Usuário:</strong></td>
-        <td>{{ user | uppercase }}</td>
-      </tr>
-    </table>  
-  </mat-grid-tile>
-</mat-grid-list> -->
 <!-- <div class='filtrosDetails'> 
   <h3>Filtros Adicionados:</h3>
   <ul class='ulFiltros' *ngFor='let item of filterAdd'>
     <li> {{ item }} </li>
-  </ul>
-  
+  </ul>  
 </div> -->
 
 <!-- <div class="comboboxFormsMain">
@@ -114,27 +96,27 @@
 </div> -->
 
 <div>
-  <!-- <button mat-button color='primary' (click)="filtro()">Aplicar Filtro</button>
-    <button mat-button color='accent' (click)="addFiltro()">Add Filtro</button>  -->
-    <button mat-button color="warn" (click)="limparFiltro()" >Limpar Filtro</button>    
-  </div>
-  
-  
+  <button mat-button color="warn" (click)="limparFiltro()" >Limpar Filtro</button>    
+</div>
+
+<div class="container">
   <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z4">
     <!--- Note that these columns can be defined in any order.
       The actual rendered columns are set as a property on the row definition" -->
-      
-      <div ng-container matColumnDef="codEstabel" >
-        <th class='headerTable' mat-header-cell *matHeaderCellDef> 
-          Estab.Vda. 
-          <mat-form-field  class="filter">
-            <mat-label>Filtro</mat-label>
-            <input matInput [formControl]="estabVdaFilter"  >
-            
-          </mat-form-field>
+      <ng-container matColumnDef="codEstabel" >
+        <th mat-header-cell *matHeaderCellDef> 
+          <mat-card>
+            <mat-card-title class="textHeaderTable">Estab. Vda</mat-card-title>
+            <mat-form-field  class="filter">
+              <mat-label>Filtro</mat-label>
+              <input matInput [formControl]="estabVdaFilter">  
+            </mat-form-field>
+          </mat-card>
         </th>
-        <td mat-cell *matCellDef="let item"> {{item.codEstabel }} </td>
-      </div>
+        <td mat-cell *matCellDef="let item">
+          {{item.codEstabel }}
+        </td>
+      </ng-container>
       
       
       <ng-container matColumnDef="uf">
@@ -222,11 +204,14 @@
     [pageSizeOptions]="[5, 25, 50, 100]">
   </mat-paginator>
   
-  
-  
-  
-  
-  
-  
-  
-  
+</div>
+
+
+
+
+
+
+
+
+
+

@@ -5,32 +5,40 @@ body {
   
 }
 
+::ng-deep .mat-input{
+  width:40px;
+}
+
+.filter{
+  width: 40px;
+}
+
+.example-full-width{
+  width: 40px;
+}
+
 .headerTable {
   padding-top: 10px; 
 }
 
-
-
-
-.tableDescontos{
-  width: 900px;
+ng-container {
+  width: 40px;
+  height: auto;
 }
 
+/* 
 .mat-form-field {
   width: 100px;
-}
+} */
 
-.setInput {
-  max-width: 80px;
-  
-}
 
-.tableDescontos td{
+
+table td{
   padding-right: 10px;
 }
-.filter{
-  display: flex;
-  flex-direction: row;
+
+.textHeaderTable {
+  font-size: 12px;
 }
 
 .comboboxFormsMain{

@@ -15,8 +15,8 @@ import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 })
 export class DescontosComponent implements OnInit, AfterViewInit {
 
-  ngVersion: string = VERSION.full;
-  matVersion: string = '5.1.0';
+  // ngVersion: string = VERSION.full;
+  // matVersion: string = '5.1.0';
   breakpoint: number;
 
   estabVdaFilter = new FormControl('');
@@ -24,7 +24,7 @@ export class DescontosComponent implements OnInit, AfterViewInit {
   regiaoFilter = new FormControl('');
   contribFilter = new FormControl('');
   tabFilter = new FormControl('');
-
+  
   filterValues = {
     codEstabel: '',
     contrib: '',
@@ -32,43 +32,43 @@ export class DescontosComponent implements OnInit, AfterViewInit {
     regiao: '',
     sufixoCv: ''
   };
-
+  
   constructor( public breakpointObserver: BreakpointObserver,
-               private ngZone: NgZone,
-               private descontosService: DescontosService,
-               private el: ElementRef,
-               private snackBar: MatSnackBar ) {
-    this.dataSource.filterPredicate = this.createFilter();
-  }
-
-  selectedOption: string;
-  printedOption: string;
-  filterAdd: string[] = [];
-  date = new Date();
-  descontos: Descontos[];
-  user = this.descontosService.getUser();
-  displayedColumns: string[] = ['codEstabel',
-                                'uf',
-                                'regiao',
-                                'contrib',
-                                'fmFio',
-                                'fmParalelo',
-                                'fmPp',
-                                'fmFlex',
-                                'fmCabo',
-                                'fmNu',
-                                'sufixoCv'
-                              ];
-
+    private ngZone: NgZone,
+    private descontosService: DescontosService,
+    private el: ElementRef,
+    private snackBar: MatSnackBar ) {
+      this.dataSource.filterPredicate = this.createFilter();
+    }
+    
+    selectedOption: string;
+    printedOption: string;
+    filterAdd: string[] = [];
+    date = new Date();
+    descontos: Descontos[];
+    user = this.descontosService.getUser();
+    displayedColumns: string[] = ['codEstabel',
+    'uf',
+    'regiao',
+    'contrib',
+    'fmFio',
+    'fmParalelo',
+    'fmPp',
+    'fmFlex',
+    'fmCabo',
+    'fmNu',
+    'sufixoCv'
+  ];
+  
   dataSource = new MatTableDataSource<Descontos>();
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
-
+  
   ngOnInit() {
     this.breakpoint = (window.innerWidth <= 800) ? 1 : 3;
     this.getDescontosTable();
-
-
+    
+    
     // filter codEstabel
     this.estabVdaFilter.valueChanges
     .subscribe(
@@ -76,78 +76,82 @@ export class DescontosComponent implements OnInit, AfterViewInit {
         this.filterValues.codEstabel = codEstabel;
         this.dataSource.filter = JSON.stringify(this.filterValues);
       }
-    );
-    // filter UF
-    this.ufFilter.valueChanges
-    .subscribe(
-      uf => {
-        this.filterValues.uf = uf;
-        this.dataSource.filter = JSON.stringify(this.filterValues);
-      }
-    );
-    // filter Regiao
-    this.regiaoFilter.valueChanges
-    .subscribe(
-      regiao => {
-        this.filterValues.regiao = regiao;
-        this.dataSource.filter = JSON.stringify(this.filterValues);
-      }
-    );
-    // filter Contrib
-    this.contribFilter.valueChanges
-    .subscribe(
-      contrib => {
-        this.filterValues.contrib = contrib;
-        this.dataSource.filter = JSON.stringify(this.filterValues);
-      }
-    );
-    // filter Tab
-    this.tabFilter.valueChanges
-    .subscribe(
-      sufixoCv => {
-        this.filterValues.sufixoCv = sufixoCv;
-        this.dataSource.filter = JSON.stringify(this.filterValues);
-      }
-    );
-  }
-
-  ngAfterViewInit() {
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
-  }
-
-  onResize(event) {
-    this.breakpoint = (event.target.innerWidth <= 400) ? 1 : 3;
-  }
-
-// Filtros
-  createFilter(): (data: any, filter: string) => boolean {
-    const filterFunction = function(data, filter): boolean {
-      let searchTerms = JSON.parse(filter);
-      return data.codEstabel.toLowerCase().indexOf(searchTerms.codEstabel) !== -1
-          && data.uf.toLowerCase().indexOf(searchTerms.uf) !== -1
-          && data.regiao.toLowerCase().indexOf(searchTerms.regiao) !== -1
-          && data.contrib.toString().toLowerCase().indexOf(searchTerms.contrib) !== -1
-          && data.sufixoCv.toLowerCase().indexOf(searchTerms.sufixoCv) !== -1 ;
-    };
-    return filterFunction;
-  }
-
-  limparFiltro(){
-    this.estabVdaFilter.reset('');
-    this.estabVdaFilter.reset('');
-    this.ufFilter.reset('');
-    this.regiaoFilter.reset('');
-    this.contribFilter.reset('');
-    this.tabFilter.reset('');
-  }
-
-// Filtros FIM
-// Get data from DB
-  getDescontosTable(): void {
-    this.descontosService.getDescontos()
-    .subscribe(data => {
-      this.dataSource.data = data['ttDesc'];
-    });
-  }
-}
+      );
+      // filter UF
+      this.ufFilter.valueChanges
+      .subscribe(
+        uf => {
+          this.filterValues.uf = uf;
+          this.dataSource.filter = JSON.stringify(this.filterValues);
+        }
+        );
+        // filter Regiao
+        this.regiaoFilter.valueChanges
+        .subscribe(
+          regiao => {
+            this.filterValues.regiao = regiao;
+            this.dataSource.filter = JSON.stringify(this.filterValues);
+          }
+          );
+          // filter Contrib
+          this.contribFilter.valueChanges
+          .subscribe(
+            contrib => {
+              this.filterValues.contrib = contrib;
+              this.dataSource.filter = JSON.stringify(this.filterValues);
+            }
+            );
+            // filter Tab
+            this.tabFilter.valueChanges
+            .subscribe(
+              sufixoCv => {
+                this.filterValues.sufixoCv = sufixoCv;
+                this.dataSource.filter = JSON.stringify(this.filterValues);
+              }
+              );
+            }
+            
+            ngAfterViewInit() {
+              this.dataSource.sort = this.sort;
+              this.dataSource.paginator = this.paginator;
+            }
+            
+            onResize(event) {
+              this.breakpoint = (event.target.innerWidth <= 400) ? 1 : 3;
+            }
+            
+            // Filtros
+            createFilter(): (data: any, filter: string) => boolean {
+              const filterFunction = function(data, filter): boolean {
+                let searchTerms = JSON.parse(filter);
+                return data.codEstabel.toLowerCase().indexOf(searchTerms.codEstabel) !== -1
+                && data.uf.toLowerCase().indexOf(searchTerms.uf) !== -1
+                && data.regiao.toLowerCase().indexOf(searchTerms.regiao) !== -1
+                && data.contrib.toString().toLowerCase().indexOf(searchTerms.contrib) !== -1
+                && data.sufixoCv.toLowerCase().indexOf(searchTerms.sufixoCv) !== -1 ;
+              };
+              return filterFunction;
+            }
+            
+            limparFiltro(){
+              this.estabVdaFilter.reset('');
+              this.estabVdaFilter.reset('');
+              this.ufFilter.reset('');
+              this.regiaoFilter.reset('');
+              this.contribFilter.reset('');
+              this.tabFilter.reset('');
+              
+              this.snackBar.open( 'Filtro Limpo', '[x]Fechar', {
+                duration: 2000});
+              }
+              
+              // Filtros FIM
+              // Get data from DB
+              getDescontosTable(): void {
+                this.descontosService.getDescontos()
+                .subscribe(data => {
+                  this.dataSource.data = data['ttDesc'];
+                });
+              }
+            }
+            
