@@ -17,7 +17,9 @@
     </mat-grid-tile>
     <mat-grid-tile>
       <table>
-        <th>Adicionais Possiveis:</th>
+        <tr>
+            <td><b>Adicionais Possiveis:</b></td>
+        </tr>
         <tr>
           <td>+ 4% no flex 2,50 mm</td>
         </tr>
@@ -96,7 +98,7 @@
   </div> -->
   
   <div>
-    <button mat-button color="warn" (click)="limparFiltro()" >Limpar Filtro</button>    
+    <button mat-button color="warn" (click)="limparFiltro()" >Limpar Filtros</button>    
   </div>
   
   
@@ -105,11 +107,11 @@
     <!-- COLUNA ESTAB. VDA -->
     <ng-container matColumnDef="codEstabel" >
       <th mat-header-cell *matHeaderCellDef> 
-        <mat-card>
+        <mat-card class="matCardFilter" >
           <mat-card-title class="textHeaderTable">Estab.Vda</mat-card-title>
           <mat-card-content>
             <mat-form-field  class="filter">
-              <mat-label>Filtro</mat-label>
+              <mat-label>Filtrar</mat-label>
               <input matInput [formControl]="estabVdaFilter">  
             </mat-form-field>
           </mat-card-content>
@@ -123,11 +125,11 @@
     <!-- COLUNA ESTADO -->
     <ng-container matColumnDef="uf">
       <th mat-header-cell *matHeaderCellDef>
-        <mat-card>
+        <mat-card class="matCardFilter" >
           <mat-card-title class="textHeaderTable"> Estado </mat-card-title>
           <mat-card-content>
             <mat-form-field class="filter">
-              <mat-label>Filtro</mat-label>
+              <mat-label>Filtrar</mat-label>
               <input matInput [formControl]="ufFilter">
             </mat-form-field>
           </mat-card-content>
@@ -139,11 +141,11 @@
     <!-- COLUNA REGIAO -->
     <ng-container matColumnDef="regiao">
       <th mat-header-cell *matHeaderCellDef>
-        <mat-card>
+        <mat-card class="matCardFilter" >
           <mat-card-title class="textHeaderTable">Região</mat-card-title>
           <mat-card-content>
             <mat-form-field class="filter">
-              <mat-label>Filtro</mat-label>
+              <mat-label>Filtrar</mat-label>
               <input matInput [formControl]="regiaoFilter">
             </mat-form-field>
           </mat-card-content>
@@ -157,7 +159,7 @@
       <th class='headerTable' mat-header-cell *matHeaderCellDef mat-sort-header>
         Contribuinte
         <!-- <mat-form-field class="filter">
-          <mat-label>Filtro</mat-label>
+          <mat-label>Filtrar</mat-label>
           <input matInput [formControl]="contribFilter">
         </mat-form-field> -->
       </th>
@@ -196,12 +198,12 @@
     
     <ng-container matColumnDef="sufixoCv">
       <th mat-header-cell *matHeaderCellDef>
-        <mat-card>
+        <mat-card class="matCardFilter" >
           <mat-card-content>
             <mat-card-title class="textHeaderTable">Num.TAB</mat-card-title>
             <mat-card-content>
               <mat-form-field class="filter">
-                <mat-label>Filtro</mat-label>
+                <mat-label>Filtrar</mat-label>
                 <input matInput [formControl]="tabFilter">
               </mat-form-field>
             </mat-card-content>
