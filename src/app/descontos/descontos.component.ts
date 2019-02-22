@@ -15,8 +15,6 @@ import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 })
 export class DescontosComponent implements OnInit, AfterViewInit {
 
-  // ngVersion: string = VERSION.full;
-  // matVersion: string = '5.1.0';
   breakpoint: number;
 
   estabVdaFilter = new FormControl('');
