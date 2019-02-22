@@ -5,32 +5,17 @@ body {
   
 }
 
-::ng-deep .mat-input{
-  width:40px;
+table {
+  width: 100%;
 }
 
 .filter{
-  width: 40px;
-}
-
-.example-full-width{
-  width: 40px;
+  width: 2rem;
 }
 
 .headerTable {
   padding-top: 10px; 
 }
-
-ng-container {
-  width: 40px;
-  height: auto;
-}
-
-/* 
-.mat-form-field {
-  width: 100px;
-} */
-
 
 
 table td{
@@ -53,13 +38,4 @@ table td{
   float: left;
   margin: 5px;
   
-}
-
-.filtrosDetails {
-  display: flex;
-}
-
-.ulFiltros {
-  display: inline;
-  list-style-type: square;
 }
