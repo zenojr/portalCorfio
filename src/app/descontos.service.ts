@@ -30,8 +30,4 @@ export class DescontosService {
     return window.location.search.substring(6);
   }
 
-
- 
-
-
 }
