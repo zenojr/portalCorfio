@@ -1,12 +1,28 @@
 body {
   max-width: 100%;
   height: auto;
+  margin: 0;
   
 }
 
-.tableDescontos table{
-  width: 100%;
-  overflow: auto;
+.headerTable {
+  padding-top: 10px; 
+}
+
+
+
+
+.tableDescontos{
+  width: 900px;
+}
+
+.mat-form-field {
+  width: 100px;
+}
+
+.setInput {
+  max-width: 80px;
+  
 }
 
 .tableDescontos td{
@@ -17,28 +33,18 @@ body {
   flex-direction: row;
 }
 
-/* .filter {
-  width: 30px;
-}
-
-
-.filter input {
-  width: 30px;  
-} */
-
-
-
-
-
-
-
 .comboboxFormsMain{
   display: flex;
   flex-direction: row;
 }
 
-.logo{
-  width: 100px;
+.logo img{
+  max-width: 70%;
+  min-width: 20%;
+  height: auto;
+  float: left;
+  margin: 5px;
+  
 }
 
 .filtrosDetails {

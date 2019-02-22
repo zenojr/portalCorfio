@@ -1,9 +1,12 @@
-import { Component, OnChanges, OnInit, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
+import { Component, NgZone, OnChanges, OnInit, ViewChild, AfterViewInit, ElementRef, VERSION } from '@angular/core';
 import { MatSort, MatPaginator, MatTableDataSource, MatFormFieldControl, MatSelect, MatSnackBar } from '@angular/material';
 import { DescontosService } from '../descontos.service';
 import { Descontos } from './descontos.model';
 import { FilterAdd } from './filterAdd.model';
 import { FormControl } from '@angular/forms';
+import { CdkTextareaAutosize } from '@angular/cdk/text-field';
+import { take } from 'rxjs/operators';
+import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-descontos',
@@ -11,6 +14,10 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./descontos.component.css']
 })
 export class DescontosComponent implements OnInit, AfterViewInit {
+
+  ngVersion: string = VERSION.full;
+  matVersion: string = '5.1.0';
+  breakpoint: number;
 
   estabVdaFilter = new FormControl('');
   ufFilter = new FormControl('');
@@ -24,9 +31,13 @@ export class DescontosComponent implements OnInit, AfterViewInit {
     uf: '',
     regiao: '',
     sufixoCv: ''
-  }
+  };
 
-  constructor( private descontosService: DescontosService, private el: ElementRef, private snackBar: MatSnackBar ) {
+  constructor( public breakpointObserver: BreakpointObserver,
+               private ngZone: NgZone,
+               private descontosService: DescontosService,
+               private el: ElementRef,
+               private snackBar: MatSnackBar ) {
     this.dataSource.filterPredicate = this.createFilter();
   }
 
@@ -36,31 +47,28 @@ export class DescontosComponent implements OnInit, AfterViewInit {
   date = new Date();
   descontos: Descontos[];
   user = this.descontosService.getUser();
-  displayedColumns: string[] = ['codEstabel', 'uf' , 'regiao', 'contrib', 'fmFio',
-  'fmParalelo', 'fmPp', 'fmFlex', 'fmCabo', 'fmNu', 'sufixoCv'];
+  displayedColumns: string[] = ['codEstabel',
+                                'uf',
+                                'regiao',
+                                'contrib',
+                                'fmFio',
+                                'fmParalelo',
+                                'fmPp',
+                                'fmFlex',
+                                'fmCabo',
+                                'fmNu',
+                                'sufixoCv'
+                              ];
 
   dataSource = new MatTableDataSource<Descontos>();
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  // @ViewChild('filter') filter: ElementRef;
-
-  // applyFilter(filterValue: string) {
-  //   this.dataSource.filter = filterValue.trim().toLowerCase();
-  // }
-
-  // applyFilter() {
-  //   if ( this.filterAdd  != null ) {
-  //     const filterAddString = this.filterAdd.toString().trim().toLowerCase();
-  //     console.log(filterAddString);
-  //     return this.dataSource.filter = filterAddString;
-  //     // console.log(filterAddString);
-  //   }
-  // }
 
   ngOnInit() {
+    this.breakpoint = (window.innerWidth <= 800) ? 1 : 3;
     this.getDescontosTable();
 
-    
+
     // filter codEstabel
     this.estabVdaFilter.valueChanges
     .subscribe(
@@ -69,7 +77,6 @@ export class DescontosComponent implements OnInit, AfterViewInit {
         this.dataSource.filter = JSON.stringify(this.filterValues);
       }
     );
-
     // filter UF
     this.ufFilter.valueChanges
     .subscribe(
@@ -78,7 +85,6 @@ export class DescontosComponent implements OnInit, AfterViewInit {
         this.dataSource.filter = JSON.stringify(this.filterValues);
       }
     );
-
     // filter Regiao
     this.regiaoFilter.valueChanges
     .subscribe(
@@ -87,7 +93,6 @@ export class DescontosComponent implements OnInit, AfterViewInit {
         this.dataSource.filter = JSON.stringify(this.filterValues);
       }
     );
-
     // filter Contrib
     this.contribFilter.valueChanges
     .subscribe(
@@ -96,7 +101,6 @@ export class DescontosComponent implements OnInit, AfterViewInit {
         this.dataSource.filter = JSON.stringify(this.filterValues);
       }
     );
-
     // filter Tab
     this.tabFilter.valueChanges
     .subscribe(
@@ -105,16 +109,20 @@ export class DescontosComponent implements OnInit, AfterViewInit {
         this.dataSource.filter = JSON.stringify(this.filterValues);
       }
     );
-
   }
 
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
   }
+
+  onResize(event) {
+    this.breakpoint = (event.target.innerWidth <= 400) ? 1 : 3;
+  }
+
 // Filtros
   createFilter(): (data: any, filter: string) => boolean {
-    let filterFunction = function(data, filter): boolean {
+    const filterFunction = function(data, filter): boolean {
       let searchTerms = JSON.parse(filter);
       return data.codEstabel.toLowerCase().indexOf(searchTerms.codEstabel) !== -1
           && data.uf.toLowerCase().indexOf(searchTerms.uf) !== -1
@@ -132,12 +140,10 @@ export class DescontosComponent implements OnInit, AfterViewInit {
     this.regiaoFilter.reset('');
     this.contribFilter.reset('');
     this.tabFilter.reset('');
-
   }
 
-
 // Filtros FIM
-
+// Get data from DB
   getDescontosTable(): void {
     this.descontosService.getDescontos()
     .subscribe(data => {
