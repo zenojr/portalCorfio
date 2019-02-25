@@ -7,6 +7,8 @@ import { FormControl } from '@angular/forms';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { take } from 'rxjs/operators';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
+import { ClipboardService } from 'ngx-clipboard';
+
 
 @Component({
   selector: 'app-descontos',
@@ -109,6 +111,10 @@ export class DescontosComponent implements OnInit, AfterViewInit {
 
             onResize(event) {
               this.breakpoint = (event.target.innerWidth <= 400) ? 1 : 3;
+            }
+
+            copyData(event){
+           
             }
 
             // Filtros

@@ -5,6 +5,10 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+mat-form-field {
+  padding: 0;
+}
+
 .matCardFilter {
   align-content: center;
   height: 25px;
@@ -18,7 +22,7 @@ table {
 }
 
 .filter{
-  width: 5rem;
+  width: 75px;
 }
 
 table td{
