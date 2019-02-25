@@ -7,8 +7,6 @@ import { FormControl } from '@angular/forms';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { take } from 'rxjs/operators';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
-import { ClipboardService } from 'ngx-clipboard';
-
 
 @Component({
   selector: 'app-descontos',
@@ -16,15 +14,14 @@ import { ClipboardService } from 'ngx-clipboard';
   styleUrls: ['./descontos.component.css']
 })
 export class DescontosComponent implements OnInit, AfterViewInit {
-  
+
   breakpoint: number;
-  
   estabVdaFilter = new FormControl('');
   ufFilter = new FormControl('');
   regiaoFilter = new FormControl('');
   contribFilter = new FormControl('');
   tabFilter = new FormControl('');
-  
+
   filterValues = {
     codEstabel: '',
     contrib: '',
@@ -32,15 +29,14 @@ export class DescontosComponent implements OnInit, AfterViewInit {
     regiao: '',
     sufixoCv: ''
   };
-  
+
   constructor( public breakpointObserver: BreakpointObserver,private ngZone: NgZone,
     private descontosService: DescontosService,
     private el: ElementRef,
     private snackBar: MatSnackBar ) {
       this.dataSource.filterPredicate = this.createFilter();
     }
-    
-    
+
     date = new Date();
     descontos: Descontos[];
     user = this.descontosService.getUser();
@@ -53,12 +49,14 @@ export class DescontosComponent implements OnInit, AfterViewInit {
     'fmNu',
     'sufixoCv'
   ];
-  
+
   dataSource = new MatTableDataSource<Descontos>();
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngOnInit() {
+
+    console.log(this.user);
     this.breakpoint = (window.innerWidth <= 800) ? 1 : 3;
     this.getDescontosTable();
 
@@ -111,10 +109,6 @@ export class DescontosComponent implements OnInit, AfterViewInit {
 
             onResize(event) {
               this.breakpoint = (event.target.innerWidth <= 400) ? 1 : 3;
-            }
-
-            copyData(event){
-           
             }
 
             // Filtros

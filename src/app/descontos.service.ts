@@ -22,6 +22,8 @@ export class DescontosService {
   }
 
   getDescontos(): Observable<Descontos[]> {
+    // const usuario =  window.location.search.substring(6);
+    
     const headers = new HttpHeaders();
     return this.http.get<Descontos[]>(this.descontosURL + this.user , {headers})
   }
