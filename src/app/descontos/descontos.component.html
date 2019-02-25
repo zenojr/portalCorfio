@@ -104,7 +104,7 @@
   </div>
   
   
-  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z4">
+  <table class="tablePrincial mat-elevation-z4" mat-table [dataSource]="dataSource" matSort >
     
     <!-- COLUNA ESTAB. VDA -->
     <ng-container matColumnDef="codEstabel" >
@@ -113,7 +113,7 @@
           <mat-card-title class="textHeaderTable">Estab.Vda</mat-card-title>
           <mat-card-content>
             <mat-form-field  class="filter">
-              <mat-label>Est.Vda</mat-label>
+              <mat-label class="hideMatLabel" class="hideMatLabel">Est.Vda</mat-label>
               <!-- <input matInput [formControl]="estabVdaFilter">   -->
               <mat-select [formControl] = "estabVdaFilter" placeholder="Estab.Vda">
                   <mat-option *ngFor="let item of dataSource.data | groupByCodEstabel" [value]="item.codEstabel">
@@ -136,7 +136,7 @@
           <mat-card-title class="textHeaderTable"> Estado </mat-card-title>
           <mat-card-content>
             <mat-form-field class="filter">
-              <mat-label>Estado</mat-label>
+              <mat-label class="hideMatLabel">Estado</mat-label>
               <!-- <input matInput [formControl]="ufFilter"> -->
               <mat-select [formControl] = "ufFilter" placeholder="Estado">
                   <mat-option *ngFor="let item of dataSource.data | groupByUF" [value]="item.uf">
@@ -157,7 +157,7 @@
           <mat-card-title class="textHeaderTable">Região</mat-card-title>
           <mat-card-content>
             <mat-form-field class="filter">
-              <mat-label>Região</mat-label>
+              <mat-label class="hideMatLabel">Região</mat-label>
               <!-- <input matInput [formControl]="regiaoFilter"> -->
               <mat-select [formControl] = "regiaoFilter" placeholder="Região">
                   <mat-option *ngFor="let item of dataSource.data | groupByRegiao" [value]="item.regiao">
@@ -176,7 +176,7 @@
       <th class='headerTable' mat-header-cell *matHeaderCellDef mat-sort-header>
         Contrib.
         <!-- <mat-form-field class="filter">
-          <mat-label>Filtrar</mat-label>
+          <mat-label class="hideMatLabel">Filtrar</mat-label>
           <input matInput [formControl]="contribFilter">
         </mat-form-field> -->
       </th>
@@ -191,7 +191,7 @@
               <mat-card-title class="textHeaderTable">Num.TAB</mat-card-title>
               <mat-card-content>
                 <mat-form-field class="filter">
-                  <mat-label>Num.TAB</mat-label>
+                  <mat-label class="hideMatLabel">Num.TAB</mat-label>
                   <!-- <input matInput [formControl]="tabFilter"> -->
                   <mat-select [formControl] = "tabFilter" placeholder="Tabela">
                       <mat-option *ngFor="let item of dataSource.data | groupByNumeroTab" [value]="item.sufixoCv">
@@ -208,7 +208,7 @@
     
     <!-- COLUNA FIO -->
     <ng-container matColumnDef="fmFio">
-      <th class='headerTable' mat-header-cell *matHeaderCellDef mat-sort-header> Fio </th>
+      <th class='headerTable' mat-header-cell *matHeaderCellDef mat-sort-header>Fio </th>
       <td mat-cell *matCellDef="let item"> {{item.fmFio | number:'2.2-5' }} % </td>
     </ng-container>
 
@@ -246,7 +246,7 @@
     <!-- COLUNA DESCONTO PRIMARIO CONTRIBUINTE -->
     <ng-container matColumnDef="descPri">
       <th class='headerTable' mat-header-cell *matHeaderCellDef mat-sort-header> Desc.Pri </th>
-      <td mat-cell *matCellDef="let item"> {{item.descPri }} </td>
+      <td mat-cell *matCellDef="let item"> {{item.descPri | number:'2.2-5' }} % </td>
     </ng-container>
     
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -257,8 +257,8 @@
     <mat-paginator #paginator 
     [length]="dataSource?.filteredData.length"
     [pageIndex]="0"
-    [pageSize]="25"
-    [pageSizeOptions]="[5, 25, 50, 100]">
+    [pageSize]="50"
+    [pageSizeOptions]="[25, 50, 100, 150]">
   </mat-paginator>
 </mat-card>
 </div>
