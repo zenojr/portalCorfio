@@ -11,9 +11,11 @@ mat-form-field {
 
 .matCardFilter {
   align-content: center;
-  height: 25px;
+  height: 50px;
   width: auto;
-  max-width: 90px;
+  max-width: 70px;
+  padding: 10px;
+  
 }
 
 table {
@@ -22,11 +24,11 @@ table {
 }
 
 .filter{
-  width: 75px;
+  width: 50px;
 }
 
 table td{
-  padding-right: 10px;
+  padding-right: 5px;
 }
 
 .textHeaderTable {

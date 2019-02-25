@@ -40,16 +40,16 @@ export class DescontosComponent implements OnInit, AfterViewInit {
     date = new Date();
     descontos: Descontos[];
     user = this.descontosService.getUser();
-    displayedColumns: string[] = ['codEstabel', 'uf', 'regiao', 'contrib',
+    displayedColumns: string[] = ['codEstabel', 'uf', 'regiao',
+    'sufixoCv',
     'fmFio',
     'fmParalelo',
     'fmPp',
     'fmFlex',
     'fmCabo',
     'fmNu',
-    'sufixoCv',
-    'descPriContrib',
-    'descPriNaoContrib'
+    'contrib',
+    'descPri'
   ];
 
   dataSource = new MatTableDataSource<Descontos>();
