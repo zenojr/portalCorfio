@@ -47,7 +47,9 @@ export class DescontosComponent implements OnInit, AfterViewInit {
     'fmFlex',
     'fmCabo',
     'fmNu',
-    'sufixoCv'
+    'sufixoCv',
+    'descPriContrib',
+    'descPriNaoContrib'
   ];
 
   dataSource = new MatTableDataSource<Descontos>();
