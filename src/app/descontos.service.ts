@@ -11,7 +11,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 })
 export class DescontosService {
   private user =  window.location.search.substring(6);
-  private descontosURL = 'http://192.168.0.7:8080/cgi-bin/wspd_cgi.sh/WService=corfio/wep/we0040041.p?usuario=';
+  private descontosURL = 'http://portal.corfio.com.br:8081/cgi-bin/wspd_cgi.sh/WService=corfio/wep/we0040041.p?usuario=';
 
   constructor( private http: HttpClient, private cookieService: CookieService ) {
     console.log('APP Run!');
