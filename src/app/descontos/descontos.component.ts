@@ -49,7 +49,8 @@ export class DescontosComponent implements OnInit, AfterViewInit {
     'fmCabo',
     'fmNu',
     'contrib',
-    'descPri'
+    'descPri',
+    'copy'
   ];
 
   dataSource = new MatTableDataSource<Descontos>();
@@ -69,82 +70,79 @@ export class DescontosComponent implements OnInit, AfterViewInit {
         this.filterValues.codEstabel = codEstabel;
         this.dataSource.filter = JSON.stringify(this.filterValues);
       }
-      );
-      // filter UF
-      this.ufFilter.valueChanges
-      .subscribe(
-        uf => {
-          this.filterValues.uf = uf.toLowerCase();
-          this.dataSource.filter = JSON.stringify(this.filterValues);
-        }
-        );
-        // filter Regiao
-        this.regiaoFilter.valueChanges
-        .subscribe(
-          regiao => {
-            this.filterValues.regiao = regiao.toLowerCase();
-            this.dataSource.filter = JSON.stringify(this.filterValues);
-          }
-          );
-          // filter Contrib
-          this.contribFilter.valueChanges
-          .subscribe(
-            contrib => {
-              this.filterValues.contrib = contrib.toLowerCase();
-              this.dataSource.filter = JSON.stringify(this.filterValues);
-            }
-            );
-            // filter Tab
-            this.tabFilter.valueChanges
-            .subscribe(
-              sufixoCv => {
-                this.filterValues.sufixoCv = sufixoCv.toLowerCase();
-                this.dataSource.filter = JSON.stringify(this.filterValues);
-              }
-              );
-            }
+    );
+    // filter UF
+    this.ufFilter.valueChanges
+    .subscribe(
+      uf => {
+        this.filterValues.uf = uf.toLowerCase();
+        this.dataSource.filter = JSON.stringify(this.filterValues);
+      }
+    );
+    // filter Regiao
+    this.regiaoFilter.valueChanges
+    .subscribe(
+      regiao => {
+        this.filterValues.regiao = regiao.toLowerCase();
+        this.dataSource.filter = JSON.stringify(this.filterValues);
+      }
+    );
+    // filter Contrib
+    this.contribFilter.valueChanges
+    .subscribe(
+      contrib => {
+        this.filterValues.contrib = contrib.toLowerCase();
+        this.dataSource.filter = JSON.stringify(this.filterValues);
+      }
+    );
+    // filter Tab
+    this.tabFilter.valueChanges
+    .subscribe(
+      sufixoCv => {
+        this.filterValues.sufixoCv = sufixoCv.toLowerCase();
+        this.dataSource.filter = JSON.stringify(this.filterValues);
+      }
+    );
+  }
 
-            ngAfterViewInit() {
-              this.dataSource.sort = this.sort;
-              this.dataSource.paginator = this.paginator;
-            }
+  ngAfterViewInit() {
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
+  }
 
-            onResize(event) {
-              this.breakpoint = (event.target.innerWidth <= 400) ? 1 : 3;
-            }
+  onResize(event) {
+    this.breakpoint = (event.target.innerWidth <= 400) ? 1 : 3;
+  }
 
-            // Filtros
-            createFilter(): (data: any, filter: string) => boolean {
-              const filterFunction = function(data, filter): boolean {
-                let searchTerms = JSON.parse(filter);
-                return data.codEstabel.toLowerCase().indexOf(searchTerms.codEstabel) !== -1
-                && data.uf.toLowerCase().indexOf(searchTerms.uf) !== -1
-                && data.regiao.toLowerCase().indexOf(searchTerms.regiao) !== -1
-                && data.contrib.toString().toLowerCase().indexOf(searchTerms.contrib) !== -1
-                && data.sufixoCv.toLowerCase().indexOf(searchTerms.sufixoCv) !== -1 ;
-              };
-              return filterFunction;
-            }
-            
-            limparFiltro(){
-              this.estabVdaFilter.reset('');
-              this.estabVdaFilter.reset('');
-              this.ufFilter.reset('');
-              this.regiaoFilter.reset('');
-              this.contribFilter.reset('');
-              this.tabFilter.reset('');
-              
-              this.snackBar.open( 'Filtro limpo com sucesso', '[x]Fechar', {
-                duration: 2000});
-              }
-              
-              // Filtros FIM
-              // Get data from DB
-              getDescontosTable(): void {
-                this.descontosService.getDescontos()
-                .subscribe(data => {
-                  this.dataSource.data = data['ttDesc'];
-                });
-              }
-            }
-            
+  // Filtros
+  createFilter(): (data: any, filter: string) => boolean {
+    const filterFunction = function(data, filter): boolean {
+      let searchTerms = JSON.parse(filter);
+      return data.codEstabel.toLowerCase().indexOf(searchTerms.codEstabel) !== -1
+      && data.uf.toLowerCase().indexOf(searchTerms.uf) !== -1
+      && data.regiao.toLowerCase().indexOf(searchTerms.regiao) !== -1
+      && data.contrib.toString().toLowerCase().indexOf(searchTerms.contrib) !== -1
+      && data.sufixoCv.toLowerCase().indexOf(searchTerms.sufixoCv) !== -1 ;
+    };
+    return filterFunction;
+  }
+
+  limparFiltro(){
+    this.estabVdaFilter.reset('');
+    this.estabVdaFilter.reset('');
+    this.ufFilter.reset('');
+    this.regiaoFilter.reset('');
+    this.contribFilter.reset('');
+    this.tabFilter.reset('');
+    this.snackBar.open( 'Filtro limpo com sucesso', '[x]Fechar', {
+      duration: 2000});
+    }
+    // Filtros FIM
+    // Get data from DB
+    getDescontosTable(): void {
+      this.descontosService.getDescontos()
+      .subscribe(data => {
+        this.dataSource.data = data['ttDesc'];
+      });
+    }
+  }

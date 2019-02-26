@@ -13,8 +13,8 @@ export class DescontosService {
   private user =  window.location.search.substring(6);
   private descontosURL = 'http://portal.corfio.com.br:8081/cgi-bin/wspd_cgi.sh/WService=corfio/wep/we0040041.p?usuario=';
 
-  constructor( private http: HttpClient, private cookieService: CookieService ) {
-    console.log('APP Run!');
+  constructor( private http: HttpClient) {
+    console.log('APP Run! -- Ambiente DEV');
   }
 
   getdataCabecalho() {
