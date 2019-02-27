@@ -49,8 +49,7 @@ export class DescontosComponent implements OnInit, AfterViewInit {
     'fmCabo',
     'fmNu',
     'contrib',
-    'descPri',
-    'copy'
+    'descPri'
   ];
 
   dataSource = new MatTableDataSource<Descontos>();
@@ -100,6 +99,7 @@ export class DescontosComponent implements OnInit, AfterViewInit {
     .subscribe(
       sufixoCv => {
         this.filterValues.sufixoCv = sufixoCv.toLowerCase();
+        console.log(this.filterValues);
         this.dataSource.filter = JSON.stringify(this.filterValues);
       }
     );
