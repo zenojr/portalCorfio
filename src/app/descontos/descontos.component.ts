@@ -1,12 +1,9 @@
-import { Component, NgZone, OnChanges, OnInit, ViewChild, AfterViewInit, ElementRef, VERSION } from '@angular/core';
-import { MatSort, MatPaginator, MatTableDataSource, MatFormFieldControl, MatSelect, MatSnackBar } from '@angular/material';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { MatSort, MatPaginator, MatTableDataSource, MatSnackBar } from '@angular/material';
 import { DescontosService } from '../descontos.service';
 import { Descontos } from './descontos.model';
-import { FilterAdd } from './filterAdd.model';
 import { FormControl } from '@angular/forms';
-import { CdkTextareaAutosize } from '@angular/cdk/text-field';
-import { take } from 'rxjs/operators';
-import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
+import { BreakpointObserver } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-descontos',
@@ -15,42 +12,36 @@ import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 })
 export class DescontosComponent implements OnInit, AfterViewInit {
 
-  breakpoint: number;
-  estabVdaFilter = new FormControl('');
-  ufFilter = new FormControl('');
-  regiaoFilter = new FormControl('');
-  contribFilter = new FormControl('');
-  tabFilter = new FormControl('');
-
-  filterValues = {
-    codEstabel: '',
-    contrib: '',
-    uf: '',
-    regiao: '',
-    sufixoCv: ''
-  };
-
-  constructor( public breakpointObserver: BreakpointObserver,private ngZone: NgZone,
-    private descontosService: DescontosService,
-    private el: ElementRef,
+  constructor( public breakpointObserver: BreakpointObserver,private descontosService: DescontosService,
     private snackBar: MatSnackBar ) {
       this.dataSource.filterPredicate = this.createFilter();
     }
 
+    breakpoint: number;
+    // FILTROS
+    estabVdaFilter = new FormControl('');
+    ufFilter = new FormControl('');
+    regiaoFilter = new FormControl('');
+    contribFilter = new FormControl('');
+    tabFilter = new FormControl('');
+    filterValues = {
+      codEstabel: '',
+      contrib: '',
+      uf: '',
+      regiao: '',
+      sufixoCv: ''
+    };
     date = new Date();
     descontos: Descontos[];
     user = this.descontosService.getUser();
-    displayedColumns: string[] = ['codEstabel', 'uf', 'regiao',
-    'sufixoCv',
-    'fmFio',
-    'fmParalelo',
+    displayedColumns: string[] = ['codEstabel', 'uf', 'regiao', 'sufixoCv', 'fmFio', 'fmParalelo',
     'fmPp',
     'fmFlex',
     'fmCabo',
     'fmNu',
     'contrib',
     'descPri'
-  ];
+    ];
 
   dataSource = new MatTableDataSource<Descontos>();
   @ViewChild(MatSort) sort: MatSort;
@@ -110,9 +101,7 @@ export class DescontosComponent implements OnInit, AfterViewInit {
     this.dataSource.paginator = this.paginator;
   }
 
-  onResize(event) {
-    this.breakpoint = (event.target.innerWidth <= 400) ? 1 : 3;
-  }
+  
 
   // Filtros
   createFilter(): (data: any, filter: string) => boolean {
@@ -145,4 +134,9 @@ export class DescontosComponent implements OnInit, AfterViewInit {
         this.dataSource.data = data['ttDesc'];
       });
     }
+
+    onResize(event) {
+      this.breakpoint = (event.target.innerWidth <= 400) ? 1 : 3;
+    }
+
   }

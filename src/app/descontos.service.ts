@@ -14,7 +14,7 @@ export class DescontosService {
   private descontosURL = 'http://portal.corfio.com.br:8081/cgi-bin/wspd_cgi.sh/WService=corfio/wep/we0040041.p?usuario=';
 
   constructor( private http: HttpClient) {
-    console.log('APP Run! -- PROD');
+    console.log('APP Run! -- Ambiente DEV');
   }
 
   getdataCabecalho() {
@@ -22,8 +22,6 @@ export class DescontosService {
   }
 
   getDescontos(): Observable<Descontos[]> {
-    // const usuario =  window.location.search.substring(6);
-    
     const headers = new HttpHeaders();
     return this.http.get<Descontos[]>(this.descontosURL + this.user , {headers})
   }
@@ -31,5 +29,7 @@ export class DescontosService {
   getUser() {
     return window.location.search.substring(6);
   }
+
+ 
 
 }
