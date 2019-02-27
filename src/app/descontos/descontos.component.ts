@@ -48,7 +48,6 @@ export class DescontosComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngOnInit() {
-
     console.log(this.user);
     this.breakpoint = (window.innerWidth <= 800) ? 1 : 3;
     this.getDescontosTable();
@@ -89,11 +88,14 @@ export class DescontosComponent implements OnInit, AfterViewInit {
     this.tabFilter.valueChanges
     .subscribe(
       sufixoCv => {
+        sufixoCv = sufixoCv.slice(0, 7);
         this.filterValues.sufixoCv = sufixoCv.toLowerCase();
-        console.log(this.filterValues);
+        console.log(sufixoCv)
+        console.log(this.filterValues.sufixoCv);
         this.dataSource.filter = JSON.stringify(this.filterValues);
       }
     );
+  
   }
 
   ngAfterViewInit() {

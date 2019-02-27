@@ -9,8 +9,8 @@ export class LimpaSufixoCvPipe implements PipeTransform {
     let sufixoNovo: string = value;
     // sufixoNovo = sufixoNovo.replace(/TAB|X72|P3/gi, "");
     
-    // sufixoNovo =  sufixoNovo.substring(4,7);
-    sufixoNovo = sufixoNovo.slice( 0, 8 );
+    sufixoNovo =  sufixoNovo.substring(4);
+    // sufixoNovo = sufixoNovo.slice( 0, 10 );
     return sufixoNovo;
   }
 

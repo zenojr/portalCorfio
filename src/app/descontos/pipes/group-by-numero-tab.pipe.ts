@@ -7,11 +7,11 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class GroupByNumeroTabPipe implements PipeTransform {
 
   transform(value: any, args?: any): any {
-    value = value.slice(0,8);
-    if(value!== undefined && value!== null){
-      return _.uniqBy(value, 'sufixoCv');
+
+    if(value !== undefined && value !== null){
+      let newValue = value.slice(0,4);
+      return _.uniqBy(newValue, 'sufixoCv');  
     }
-    return value;
   }
 
 }

@@ -1,3 +1,4 @@
+import * as _ from 'lodash';
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
@@ -6,7 +7,11 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class LimpaSufixoSelectPipe implements PipeTransform {
 
   transform(value: any, args?: any): any {
-    return null;
+    let sufixoNovo: string = value;
+
+    sufixoNovo =  sufixoNovo.substring(0,7);
+
+    return sufixoNovo;
   }
 
 }

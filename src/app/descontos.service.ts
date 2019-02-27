@@ -14,7 +14,7 @@ export class DescontosService {
   private descontosURL = 'http://portal.corfio.com.br:8081/cgi-bin/wspd_cgi.sh/WService=corfio/wep/we0040041.p?usuario=';
 
   constructor( private http: HttpClient) {
-    console.log('APP Run! -- Ambiente PROD');
+    console.log('APP Run! -- Ambiente DEV');
   }
 
   getdataCabecalho() {
