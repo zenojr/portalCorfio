@@ -28,6 +28,7 @@ import { GroupByNumeroTabPipe } from './descontos/pipes/group-by-numero-tab.pipe
 import { FiltroEstabPipe } from './descontos/pipes/filtro-estab.pipe';
 import { LimpaSufixoSelectPipe } from './descontos/pipes/limpa-sufixo-select.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ClipboardModule } from 'ngx-clipboard';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatPaginatorModule,
     FormsModule,
     ReactiveFormsModule,
-    LayoutModule
+    LayoutModule,
+    ClipboardModule
   ],
   providers: [
     DescontosService,

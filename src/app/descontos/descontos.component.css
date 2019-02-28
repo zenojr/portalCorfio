@@ -5,6 +5,14 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+.inputOculto {
+  width: 0%;
+  position: absolute;
+  left: -999px;
+  z-index: -999;
+  
+}
+
 .matCardFilter {
   align-items: center;
   height: 50px;

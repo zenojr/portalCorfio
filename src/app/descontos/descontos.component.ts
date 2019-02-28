@@ -4,6 +4,8 @@ import { DescontosService } from '../descontos.service';
 import { Descontos } from './descontos.model';
 import { FormControl } from '@angular/forms';
 import { BreakpointObserver } from '@angular/cdk/layout';
+import { ClipboardService } from 'ngx-clipboard';
+
 
 @Component({
   selector: 'app-descontos',
@@ -12,12 +14,19 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 })
 export class DescontosComponent implements OnInit, AfterViewInit {
 
-  constructor( public breakpointObserver: BreakpointObserver,private descontosService: DescontosService,
-    private snackBar: MatSnackBar ) {
+  constructor( public breakpointObserver: BreakpointObserver, private descontosService: DescontosService,
+    private snackBar: MatSnackBar, private clipboardService: ClipboardService ) {
       this.dataSource.filterPredicate = this.createFilter();
     }
 
     breakpoint: number;
+
+    // CopyClipboard
+    text1 = new FormControl('') ;
+    text2: string;
+    isCopied1: boolean;
+    basic = false;
+
     // FILTROS
     estabVdaFilter = new FormControl('');
     ufFilter = new FormControl('');
@@ -40,7 +49,8 @@ export class DescontosComponent implements OnInit, AfterViewInit {
     'fmCabo',
     'fmNu',
     'contrib',
-    'descPri'
+    'descPri',
+    'copy'
     ];
 
   dataSource = new MatTableDataSource<Descontos>();
@@ -88,10 +98,8 @@ export class DescontosComponent implements OnInit, AfterViewInit {
     this.tabFilter.valueChanges
     .subscribe(
       sufixoCv => {
-        sufixoCv = sufixoCv.slice(0, 7);
+        sufixoCv = sufixoCv.slice(0,7);
         this.filterValues.sufixoCv = sufixoCv.toLowerCase();
-        console.log(sufixoCv)
-        console.log(this.filterValues.sufixoCv);
         this.dataSource.filter = JSON.stringify(this.filterValues);
       }
     );
@@ -103,7 +111,35 @@ export class DescontosComponent implements OnInit, AfterViewInit {
     this.dataSource.paginator = this.paginator;
   }
 
-  
+  callServiceToCopy() {
+    this.isCopied1 = true;
+    this.snackBar.open( 'Família de produtos copiada com sucesso.', '[x]Fechar', {
+       duration: 2000});
+  }
+
+  onCopyFailure() {
+      alert('copy fail!');
+  }
+
+  /* To copy Text from Textbox */
+  // copyInputMessage(inputElement){
+  //   inputElement.select();
+  //   document.execCommand('copy');
+  //   inputElement.setSelectionRange(0, 0);
+  //   this.snackBar.open( 'Família de produtos copiada com sucesso.', '[x]Fechar', {
+  //     duration: 2000});
+  // }
+
+  // copyInputMessage(inputElement){
+
+  //   inputElement.select();
+  //   document.execCommand('copy');
+  //   console.log(inputElement.value);
+  //   // inputElement.setSelectionRange(1, 0);
+  //   this.snackBar.open( 'Família de produtos copiada com sucesso.', '[x]Fechar', {
+  //     duration: 2000});
+  //   return inputElement.value;
+  // }
 
   // Filtros
   createFilter(): (data: any, filter: string) => boolean {
