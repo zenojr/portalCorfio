@@ -1,6 +1,6 @@
-## zenofranca.com
+## CORFIO PORTAL DESCONTOS
 
-Projeto interno desenvolvido para empresa CORFIO para consulta de descontos do portal dos representantes.
+Projeto interno desenvolvido para empresa CORFIO para consulta de descontos do portal dos representantes. O portal realiza a consulta dos dados do progress e exibe em interface Web.
 
 # Desenvolvedores
   Zeno França Jr,
