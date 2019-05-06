@@ -22,6 +22,7 @@ http://portal.corfio.com.br:8081/cgi-bin/wspd_cgi.sh/WService=corfio/utils/menu.
 O serviço está hospedado no servidor interno da empresa 192.168.0.241 porta 4201, a pasta interna do projeto é /zeno/portal. Para executar o serviço do portal deve-se executar o comando abaixo na pasta zeno/ :
 
 > nohup portal/rodaportal.sh  </dev/null >/var/log/monitoraPortalAngular.log 2>&1 &
+
 Caso ocorra alguma falha, execute o comando abaixo na pasta zeno/portal/
 
 > ng serve --prod --host=web.corfio.com.br --port=4201 --optimization
