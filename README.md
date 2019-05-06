@@ -24,6 +24,6 @@ O serviço está hospedado no servidor interno da empresa 192.168.0.241 porta 42
 > nohup portal/rodaportal.sh  </dev/null >/var/log/monitoraPortalAngular.log 2>&1 &
 Caso ocorra alguma falha, execute o comando abaixo na pasta zeno/portal/
 
-ng serve --prod --host=web.corfio.com.br --port=4201 --optimization
+> ng serve --prod --host=web.corfio.com.br --port=4201 --optimization
 
 O servidor está instalado como serviço e deve subir automaticamente ao reiniciar o servidor .241, em caso de falha basta executar o comando acima 
