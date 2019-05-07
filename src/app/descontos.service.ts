@@ -32,7 +32,7 @@ export class DescontosService {
   }
 
   getBase() {
-    return window.URL;
+    return document.URL.slice(62, 64);
   }
 
  
