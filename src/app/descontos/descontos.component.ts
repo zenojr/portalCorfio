@@ -43,7 +43,7 @@ export class DescontosComponent implements OnInit, AfterViewInit {
     date = new Date();
     descontos: Descontos[];
     user = this.descontosService.getUser();
-    displayedColumns: string[] = ['codEstabel', 'uf', 'regiao', 'sufixoCv', 'fmFio', 'fmParalelo',
+    displayedColumns: string[] = ['codEstabel', 'uf', 'regiao', 'sufixoCv', 'nrTabpre', 'fmFio', 'fmParalelo',
     'fmPp',
     'fmFlex',
     'fmCabo',
@@ -121,30 +121,10 @@ export class DescontosComponent implements OnInit, AfterViewInit {
       alert('copy fail!');
   }
 
-  /* To copy Text from Textbox */
-  // copyInputMessage(inputElement){
-  //   inputElement.select();
-  //   document.execCommand('copy');
-  //   inputElement.setSelectionRange(0, 0);
-  //   this.snackBar.open( 'Família de produtos copiada com sucesso.', '[x]Fechar', {
-  //     duration: 2000});
-  // }
-
-  // copyInputMessage(inputElement){
-
-  //   inputElement.select();
-  //   document.execCommand('copy');
-  //   console.log(inputElement.value);
-  //   // inputElement.setSelectionRange(1, 0);
-  //   this.snackBar.open( 'Família de produtos copiada com sucesso.', '[x]Fechar', {
-  //     duration: 2000});
-  //   return inputElement.value;
-  // }
-
   // Filtros
   createFilter(): (data: any, filter: string) => boolean {
     const filterFunction = function(data, filter): boolean {
-      let searchTerms = JSON.parse(filter);
+      const searchTerms = JSON.parse(filter);
       return data.codEstabel.toLowerCase().indexOf(searchTerms.codEstabel) !== -1
       && data.uf.toLowerCase().indexOf(searchTerms.uf) !== -1
       && data.regiao.toLowerCase().indexOf(searchTerms.regiao) !== -1
@@ -154,7 +134,7 @@ export class DescontosComponent implements OnInit, AfterViewInit {
     return filterFunction;
   }
 
-  limparFiltro(){
+  limparFiltro() {
     this.estabVdaFilter.reset('');
     this.estabVdaFilter.reset('');
     this.ufFilter.reset('');

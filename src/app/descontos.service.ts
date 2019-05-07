@@ -23,7 +23,7 @@ export class DescontosService {
 
   getDescontos(): Observable<Descontos[]> {
     const headers = new HttpHeaders();
-    return this.http.get<Descontos[]>(this.descontosURL + this.user , {headers})
+    return this.http.get<Descontos[]>(this.descontosURL + this.user , {headers});
   }
 
   getUser() {
