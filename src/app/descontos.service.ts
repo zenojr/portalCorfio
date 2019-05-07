@@ -25,6 +25,13 @@ export class DescontosService {
   }
 
   getDescontos(): Observable<Descontos[]> {
+    let urlQuery = document.URL.slice(62, 68);
+    if ( urlQuery === 'corfio' ) {
+      console.log('baseCorfio');
+    } else {
+      console.log( 'baseHomologa' );
+    }
+    console.log('GetURL dentro da funcao getdesc' + urlQuery);
     const headers = new HttpHeaders();
     return this.http.get<Descontos[]>(this.descontosURL + this.user , {headers});
   }
@@ -34,13 +41,7 @@ export class DescontosService {
   }
 
   getBase() {
-    let urlQuery = document.URL.slice(62, 68);
-    if ( urlQuery === 'corfio' ) {
-      console.log('baseCorfio');
-    } else {
-      console.log( 'baseHomologa' );
-    }
-    console.log('GetURL dentro da function' + urlQuery);
+    
     return document.URL.slice(62, 64);
   }
 
