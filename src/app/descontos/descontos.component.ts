@@ -21,7 +21,7 @@ export class DescontosComponent implements OnInit, AfterViewInit {
 
     breakpoint: number;
   
-    wservice = window.location.search.substring(20);
+  
     
     // CopyClipboard
     text1 = new FormControl('') ;
@@ -45,6 +45,7 @@ export class DescontosComponent implements OnInit, AfterViewInit {
     date = new Date();
     descontos: Descontos[];
     user = this.descontosService.getUser();
+    base = this.descontosService.getBase();
     displayedColumns: string[] = ['codEstabel', 'uf', 'regiao', 'sufixoCv', 'nrTabpre', 'fmFio', 'fmParalelo',
     'fmPp',
     'fmFlex',
@@ -60,7 +61,7 @@ export class DescontosComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngOnInit() {
-    console.log(this.wservice);
+    console.log(this.base);
     console.log(this.user);
     this.breakpoint = (window.innerWidth <= 800) ? 1 : 3;
     this.getDescontosTable();

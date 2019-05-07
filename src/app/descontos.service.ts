@@ -16,7 +16,6 @@ export class DescontosService {
 
   constructor( private http: HttpClient) {
     console.log('APP Run! -- PROD');
-    console.log( 'BASE ' + this.wservice );
   }
 
   getdataCabecalho() {
