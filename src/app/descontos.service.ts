@@ -26,9 +26,6 @@ export class DescontosService {
 
   getDescontos(): Observable<Descontos[]> {
 
-    let urlQuery = document.URL.slice(62, 64);
-    console.log('urlquery: ' + urlQuery);
-
     const headers = new HttpHeaders();
     console.log(headers);
     return this.http.get<Descontos[]>(this.descontosURL + this.user , {headers});

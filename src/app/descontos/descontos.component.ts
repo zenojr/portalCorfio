@@ -20,9 +20,6 @@ export class DescontosComponent implements OnInit, AfterViewInit {
     }
 
     breakpoint: number;
-  
-  
-    
     // CopyClipboard
     text1 = new FormControl('') ;
     text2: string;
