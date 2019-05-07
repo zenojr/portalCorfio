@@ -12,7 +12,9 @@ import { catchError, map, tap } from 'rxjs/operators';
 export class DescontosService {
   private user =  window.location.search.substring(6);
   private wservice = window.location.search.substring(20);
-  private descontosURL = 'http://portal.corfio.com.br:8081/cgi-bin/wspd_cgi.sh/WService=corfio/wep/we0040041.p?usuario=';
+  private descontosURL = '';
+  // private descontosURL = 'http://portal.corfio.com.br:8081/cgi-bin/wspd_cgi.sh/WService=corfio/wep/we0040041.p?usuario=';
+
 
   constructor( private http: HttpClient) {
     console.log('APP Run! -- PROD');
@@ -32,6 +34,13 @@ export class DescontosService {
   }
 
   getBase() {
+    let urlQuery = document.URL.slice(62, 68);
+    if ( urlQuery === 'corfio' ) {
+      console.log('baseCorfio');
+    } else {
+      console.log( 'baseHomologa' );
+    }
+    console.log('GetURL dentro da function' + urlQuery);
     return document.URL.slice(62, 64);
   }
 
