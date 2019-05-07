@@ -12,8 +12,8 @@ import { catchError, map, tap } from 'rxjs/operators';
 export class DescontosService {
   private user =  window.location.search.substring(6);
   private wservice = window.location.search.substring(20);
-  private descontosURL = '';
-  // private descontosURL = 'http://portal.corfio.com.br:8081/cgi-bin/wspd_cgi.sh/WService=corfio/wep/we0040041.p?usuario=';
+  // private descontosURL = '';
+  private descontosURL = 'http://portal.corfio.com.br:8081/cgi-bin/wspd_cgi.sh/WService=corfio/wep/we0040041.p?usuario=';
 
 
   constructor( private http: HttpClient) {
