@@ -32,7 +32,7 @@ export class DescontosService {
   }
 
   getBase() {
-    return window.location.pathname;
+    return window.URL;
   }
 
  
