@@ -25,6 +25,8 @@ O serviço está hospedado no servidor interno da empresa 192.168.0.241 porta 42
 
 Caso ocorra alguma falha, execute o comando abaixo na pasta zeno/portal/
 
-> ng serve --prod --host=web.corfio.com.br --port=4201 --optimization
+> node server 
+
+No caso de utilizar a opção acima o terminal precisa ficar aberto.
 
 O servidor está instalado como serviço e deve subir automaticamente ao reiniciar o servidor .241, em caso de falha basta executar o comando acima 
