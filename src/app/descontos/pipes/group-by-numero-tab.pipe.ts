@@ -8,9 +8,9 @@ export class GroupByNumeroTabPipe implements PipeTransform {
 
   transform(value: any, args?: any): any {
 
-    if(value !== undefined && value !== null){
+    if(value !== undefined && value !== null) {
       let newValue = value.slice(0, 4);
-      return _.uniqBy(newValue, 'sufixoCv');  
+      return _.uniqBy(newValue, 'sufixoCv');
     }
   }
 
