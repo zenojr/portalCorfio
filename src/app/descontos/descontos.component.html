@@ -131,7 +131,8 @@
                   <!-- <input matInput [formControl]="tabFilter"> -->
                   <mat-select [formControl] = "tabFilter" placeholder="Tabela">
                       <mat-option *ngFor="let item of dataSource.data | groupByNumeroTab" [value]="item.sufixoCv">
-                        {{item.sufixoCv | limpaSufixoSelect }}
+                        {{item.sufixoCv }}
+                        <!-- {{item.sufixoCv | limpaSufixoSelect }} -->
                       </mat-option>
                   </mat-select>
                 </mat-form-field>
