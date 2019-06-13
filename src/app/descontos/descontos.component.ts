@@ -61,7 +61,7 @@ export class DescontosComponent implements OnInit, AfterViewInit {
     console.log(this.base);
     console.log(this.user);
     this.breakpoint = (window.innerWidth <= 800) ? 1 : 3;
-    this.getDescontosTable();
+    
 
     // filter codEstabel
     this.estabVdaFilter.valueChanges
@@ -109,6 +109,7 @@ export class DescontosComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
+    this.getDescontosTable();
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
   }
