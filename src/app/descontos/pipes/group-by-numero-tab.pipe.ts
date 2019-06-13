@@ -10,6 +10,7 @@ export class GroupByNumeroTabPipe implements PipeTransform {
 
     if(value !== undefined && value !== null) {
       let newValue = value.slice(3, 6);
+      console.log('groupby' + _.uniqBy(newValue));
       return _.uniqBy(newValue, 'sufixoCv');
     }
   }
