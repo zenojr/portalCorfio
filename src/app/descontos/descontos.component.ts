@@ -61,7 +61,7 @@ export class DescontosComponent implements OnInit, AfterViewInit {
     console.log(this.base);
     console.log(this.user);
     this.breakpoint = (window.innerWidth <= 800) ? 1 : 3;
-    
+    this.getDescontosTable();
 
     // filter codEstabel
     this.estabVdaFilter.valueChanges
@@ -99,8 +99,8 @@ export class DescontosComponent implements OnInit, AfterViewInit {
     this.tabFilter.valueChanges
     .subscribe(
       sufixoCv => {
-        // sufixoCv = sufixoCv.slice(0, 8);
-        console.log(sufixoCv);
+        sufixoCv = sufixoCv.slice(0, 7);
+        console.log
         this.filterValues.sufixoCv = sufixoCv.toLowerCase();
         this.dataSource.filter = JSON.stringify(this.filterValues);
       }
@@ -109,7 +109,6 @@ export class DescontosComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.getDescontosTable();
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
   }
