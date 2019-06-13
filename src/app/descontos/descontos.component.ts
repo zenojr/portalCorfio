@@ -99,7 +99,7 @@ export class DescontosComponent implements OnInit, AfterViewInit {
     this.tabFilter.valueChanges
     .subscribe(
       sufixoCv => {
-        sufixoCv = sufixoCv.slice(0,7);
+        sufixoCv = sufixoCv.slice(0,8);
         this.filterValues.sufixoCv = sufixoCv.toLowerCase();
         this.dataSource.filter = JSON.stringify(this.filterValues);
       }
