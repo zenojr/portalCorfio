@@ -10,7 +10,7 @@ export class LimpaSufixoSelectPipe implements PipeTransform {
     let sufixoNovo: string = value;
 
     sufixoNovo =  sufixoNovo.substring(0, 7);
-
+    console.log('novoSuf' + sufixoNovo);
     return sufixoNovo;
   }
 
