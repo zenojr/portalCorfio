@@ -100,6 +100,7 @@ export class DescontosComponent implements OnInit, AfterViewInit {
     .subscribe(
       sufixoCv => {
         sufixoCv = sufixoCv.slice(0,8);
+        console.log(sufixoCv);
         this.filterValues.sufixoCv = sufixoCv.toLowerCase();
         this.dataSource.filter = JSON.stringify(this.filterValues);
       }
