@@ -8,19 +8,13 @@ export class GroupByNumeroTabPipe implements PipeTransform {
 
   transform(value: any, args?: any): any {
 
-    // let sufixoNovo: string = value;
-    // console.log(value);
-    // // sufixoNovo =  sufixoNovo.substring(0, 6);
-    // sufixoNovo =  sufixoNovo.slice(0, 7);
-    // console.log('novoSuf' + sufixoNovo);
-    // return sufixoNovo;
 
     if (value !== undefined && value !== null) {
       // let newValue = value.slice(0, 6);
-      let newValue: string = value;
-      newValue = newValue.slice(0, 7);
-      console.log(newValue);
-      return _.uniqBy(newValue, 'sufixoCv');
+      // let newValue: string = value;
+      // newValue = newValue.slice(0, 7);
+      // console.log(newValue);
+      return _.uniqBy(value, 'sufixoCv');
     }
   }
 
