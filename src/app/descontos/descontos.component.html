@@ -130,7 +130,7 @@
                   <mat-label class="hideMatLabel">Num.TAB</mat-label>
                   <!-- <input matInput [formControl]="tabFilter"> -->
                   <mat-select [formControl] = "tabFilter" placeholder="Tabela">
-                      <mat-option *ngFor="let item of dataSource.data | groupByNumeroTab" [value]="sufixoCv">
+                      <mat-option *ngFor="let item of dataSource.data | groupByNumeroTab" [value]="item.sufixoCv" #sufixoCv="item.sufixoCv">
                         {{ sufixoCv }}
                         <!-- {{item.sufixoCv | limpaSufixoSelect }} -->
                       </mat-option>
