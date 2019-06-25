@@ -153,7 +153,7 @@
               <mat-form-field class="filter">
                 <mat-label class="hideMatLabel">ICMS</mat-label>
                 <!-- <input matInput [formControl]="tabFilter"> -->
-                <mat-select [formControl] = "tabFilter" placeholder="Tabela">
+                <mat-select [formControl] = "icmsFilter" placeholder="Tabela">
                     <mat-option *ngFor="let item of dataSource.data" [value]="item.icms">
                       {{ item.icms }}
                       <!-- {{item.sufixoCv | limpaSufixoSelect }} -->
