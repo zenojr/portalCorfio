@@ -32,20 +32,18 @@ export class DescontosComponent implements OnInit, AfterViewInit {
     regiaoFilter = new FormControl('');
     contribFilter = new FormControl('');
     tabFilter = new FormControl('');
-    icmsFilter = new FormControl('');
     filterValues = {
       codEstabel: '',
       contrib: '',
       uf: '',
       regiao: '',
-      sufixoCv: '',
-      icms: '',
+      sufixoCv: ''
     };
     date = new Date();
     descontos: Descontos[];
     user = this.descontosService.getUser();
     base = this.descontosService.getBase();
-    displayedColumns: string[] = ['codEstabel', 'uf', 'regiao', 'sufixoCv', 'icms', 'nrTabpre', 'fmFio', 'fmParalelo',
+    displayedColumns: string[] = ['codEstabel', 'uf', 'regiao', 'sufixoCv', 'nrTabpre', 'fmFio', 'fmParalelo',
     'fmPp',
     'fmFlex',
     'fmCabo',
@@ -73,16 +71,6 @@ export class DescontosComponent implements OnInit, AfterViewInit {
         this.dataSource.filter = JSON.stringify(this.filterValues);
       }
     );
-
-    // filter ICMS
-    this.icmsFilter.valueChanges
-    .subscribe(
-      icms => {
-        this.filterValues.icms = icms;
-        this.dataSource.filter = JSON.stringify(this.filterValues);
-      }
-    );
-
     // filter UF
     this.ufFilter.valueChanges
     .subscribe(
@@ -116,8 +104,7 @@ export class DescontosComponent implements OnInit, AfterViewInit {
         this.dataSource.filter = JSON.stringify(this.filterValues);
       }
     );
-
-
+  
   }
 
   ngAfterViewInit() {
@@ -143,8 +130,7 @@ export class DescontosComponent implements OnInit, AfterViewInit {
       && data.uf.toLowerCase().indexOf(searchTerms.uf) !== -1
       && data.regiao.toLowerCase().indexOf(searchTerms.regiao) !== -1
       && data.contrib.toString().toLowerCase().indexOf(searchTerms.contrib) !== -1
-      && data.sufixoCv.toLowerCase().indexOf(searchTerms.sufixoCv) !== -1
-      && data.icms.toLowerCase().indexOf(searchTerms.icms) !== -1;
+      && data.sufixoCv.toLowerCase().indexOf(searchTerms.sufixoCv) !== -1 ;
     };
     return filterFunction;
   }
@@ -156,7 +142,6 @@ export class DescontosComponent implements OnInit, AfterViewInit {
     this.regiaoFilter.reset('');
     this.contribFilter.reset('');
     this.tabFilter.reset('');
-    this.icmsFilter.reset('');
     this.snackBar.open( 'Filtro limpo com sucesso', '[x]Fechar', {
       duration: 2000});
     }

@@ -5,5 +5,4 @@ export interface FilterAdd
                     uf: string;
                     regiao: string;
                     sufixoCv: string;
-                    icms: string;
                 }

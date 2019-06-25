@@ -11,7 +11,6 @@ export interface Descontos
             fmCabo: number;
             fmNu: number;
             sufixoCv: string ;
-            icms: string;
             descPri: number;
             nrTabpre: string;
         }
