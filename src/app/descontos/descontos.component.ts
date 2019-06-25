@@ -39,7 +39,7 @@ export class DescontosComponent implements OnInit, AfterViewInit {
       uf: '',
       regiao: '',
       sufixoCv: '',
-      icms: ''
+      icms: '',
     };
     date = new Date();
     descontos: Descontos[];
@@ -73,6 +73,16 @@ export class DescontosComponent implements OnInit, AfterViewInit {
         this.dataSource.filter = JSON.stringify(this.filterValues);
       }
     );
+
+    // filter ICMS
+    this.icmsFilter.valueChanges
+    .subscribe(
+      icms => {
+        this.filterValues.icms = icms;
+        this.dataSource.filter = JSON.stringify(this.filterValues);
+      }
+    );
+
     // filter UF
     this.ufFilter.valueChanges
     .subscribe(
@@ -107,15 +117,6 @@ export class DescontosComponent implements OnInit, AfterViewInit {
       }
     );
 
-    // filter ICMS
-    this.icmsFilter.valueChanges
-    .subscribe(
-      icms => {
-        // sufixoCv = sufixoCv.slice(0, 7);
-        this.filterValues.icms = icms.toLowerCase();
-        this.dataSource.filter = JSON.stringify(this.filterValues);
-      }
-    );
 
   }
 
@@ -143,7 +144,7 @@ export class DescontosComponent implements OnInit, AfterViewInit {
       && data.regiao.toLowerCase().indexOf(searchTerms.regiao) !== -1
       && data.contrib.toString().toLowerCase().indexOf(searchTerms.contrib) !== -1
       && data.sufixoCv.toLowerCase().indexOf(searchTerms.sufixoCv) !== -1
-      && data.icms.toLowerCase().indexOf(searchTerms.icms) !== -1 ;
+      && data.icms.toLowerCase().indexOf(searchTerms.icms) !== -1;
     };
     return filterFunction;
   }
