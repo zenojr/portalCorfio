@@ -14,7 +14,6 @@ export class GroupByNumeroTabPipe implements PipeTransform {
       // let newValue: string = value;
       // newValue = newValue.slice(0, 7);
       // console.log(newValue);
-      
       return _.uniqBy(value, 'sufixoCv');
     }
   }
