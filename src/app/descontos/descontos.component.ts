@@ -108,7 +108,7 @@ export class DescontosComponent implements OnInit, AfterViewInit {
     );
 
     // filter ICMS
-    this.tabFilter.valueChanges
+    this.icmsFilter.valueChanges
     .subscribe(
       icms => {
         // sufixoCv = sufixoCv.slice(0, 7);
