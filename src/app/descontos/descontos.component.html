@@ -143,6 +143,13 @@
         <td mat-cell *matCellDef="let item"> {{item.sufixoCv | limpaSufixoCv }} </td>
       </ng-container>
     
+
+    <!-- COLUNA ICMS -->
+    <ng-container matColumnDef="icms">
+        <th class='headerTable' mat-header-cell *matHeaderCellDef mat-sort-header>ICMS</th>
+        <td mat-cell *matCellDef="let item"> {{ item.icms }} % </td>
+    </ng-container>
+    
     <!-- COLUNA FIO -->
     <ng-container matColumnDef="nrTabpre">
       <th class='headerTable' mat-header-cell *matHeaderCellDef mat-sort-header>Tabela</th>

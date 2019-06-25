@@ -43,7 +43,7 @@ export class DescontosComponent implements OnInit, AfterViewInit {
     descontos: Descontos[];
     user = this.descontosService.getUser();
     base = this.descontosService.getBase();
-    displayedColumns: string[] = ['codEstabel', 'uf', 'regiao', 'sufixoCv', 'nrTabpre', 'fmFio', 'fmParalelo',
+    displayedColumns: string[] = ['codEstabel', 'uf', 'regiao', 'sufixoCv', 'nrTabpre', 'icms', 'fmFio', 'fmParalelo',
     'fmPp',
     'fmFlex',
     'fmCabo',
