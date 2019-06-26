@@ -217,8 +217,8 @@
               (cbOnSuccess)="callServiceToCopy(cbContent)" (cbOnError)="onCopyFailure()" [class.btn-success]="isCopied1">copiar</button>
               
               
-              <ul #inputTarget>
-                <li>{{ item.fmFio | number:'2.2-5' }} </li>
+              <ul >
+                <li #inputTarget>{{ item.fmFio | number:'2.2-5' }} </li>
               </ul>   
               
             <button [ngxClipboard]="inputTarget">Copy</button>
