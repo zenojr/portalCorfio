@@ -215,8 +215,7 @@
               (cbOnSuccess)="callServiceToCopy(cbContent)" (cbOnError)="onCopyFailure()" [class.btn-success]="isCopied1">copiar</button>
             </span>  -->
             <span class="input-group-append">
-              <button mat-button color="primary" class="btn btn-default" type="button" ngxClipboard 
-              [cbContent]="inputDescPri" 
+              <button mat-button color="primary" class="btn btn-default" type="button" [ngxClipboard]="inputDescPri"
               (cbOnSuccess)="callServiceToCopy(cbContent)" (cbOnError)="onCopyFailure()" [class.btn-success]="isCopied1">copiar</button>
             </span> 
         </div>
