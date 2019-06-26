@@ -113,7 +113,7 @@ export class DescontosComponent implements OnInit, AfterViewInit {
   }
 
   copy(text: string) {
-    this._clipboardService.copyFromContent(text);
+    console.log(text);
   }
 
   callServiceToCopy() {

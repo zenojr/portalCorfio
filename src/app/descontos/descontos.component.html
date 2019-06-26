@@ -207,12 +207,16 @@
         value="{{item.fmFio}}% {{item.fmParalelo}}% {{item.fmPp}}% {{item.fmFlex}}% {{item.fmCabo}}% {{item.fmNu}}% " #fmFios>
         <button mat-button color="primary" (click)="copyInputMessage(fmFios)">Copiar</button> </td> -->
 
+        <script>
+          
+        </script>
+
         <div class="input-group">
             <!-- <input type="text" class="form-control" [(ngModel)]="item.fmFio" placeholder="content will be copy after click the copy button"> -->
             <span class="input-group-append">
-                <p hidden> {{ item.fmNu | number:'2.2-5' }} </p>
+                <p hidden>  {{ item.fmNu | number:'2.2-5' }}  </p>
               <button mat-button color="primary" class="btn btn-default" type="button" ngxClipboard 
-              [cbContent]="item.fmNu + '%' " 
+              [cbContent]=copy(item);
               (cbOnSuccess)="callServiceToCopy(cbContent)" (cbOnError)="onCopyFailure()" [class.btn-success]="isCopied1">copiar</button>
               
             </span> 
