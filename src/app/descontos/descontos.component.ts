@@ -112,12 +112,7 @@ export class DescontosComponent implements OnInit, AfterViewInit {
     this.dataSource.paginator = this.paginator;
   }
 
-  copy() {
-    let copyText = document.getElementById('inputMy');
-    copyText.select();
-  document.execCommand("copy");
-  alert("Copied the text: " + copyText.value);
-  }
+  
 
   callServiceToCopy() {
     this.isCopied1 = true;
