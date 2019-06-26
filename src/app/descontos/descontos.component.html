@@ -207,13 +207,17 @@
         value="{{item.fmFio}}% {{item.fmParalelo}}% {{item.fmPp}}% {{item.fmFlex}}% {{item.fmCabo}}% {{item.fmNu}}% " #fmFios>
         <button mat-button color="primary" (click)="copyInputMessage(fmFios)">Copiar</button> </td> -->
 
-        <div class="input-group">
+        <div class="input-group"></div>
             <!-- <input type="text" class="form-control" [(ngModel)]="item.fmFio" placeholder="content will be copy after click the copy button"> -->
             <!-- <span class="input-group-append">
               <button mat-button color="primary" class="btn btn-default" type="button" ngxClipboard 
               [cbContent]="item.fmFio + '% ' + item.fmParalelo + '% ' + item.fmPp + '% ' + item.fmFlex + '% ' + item.fmCabo + '% ' + item.fmNu + '%' " 
-              (cbOnSuccess)="callServiceToCopy(cbContent)" (cbOnError)="onCopyFailure()" [class.btn-success]="isCopied1">copiar</button>
-            </span>  -->
+              (cbOnSuccess)="callServiceToCopy(cbContent)" (cbOnError)="onCopyFailure()" [class.btn-success]="isCopied1">copiar</button>  
+          </span>  -->
+          <input type="text" #inputTarget />
+ 
+<button [ngxClipboard]="inputTarget">Copy</button>
+
             <span class="input-group-append">
               <button mat-button color="primary" class="btn btn-default" type="button" [ngxClipboard]="inputDescPri"
               (cbOnSuccess)="callServiceToCopy(cbContent)" (cbOnError)="onCopyFailure()" [class.btn-success]="isCopied1">copiar</button>
