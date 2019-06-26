@@ -112,8 +112,8 @@ export class DescontosComponent implements OnInit, AfterViewInit {
     this.dataSource.paginator = this.paginator;
   }
 
-  callServiceToCopy(copy) {
-    console.log(copy);
+  callServiceToCopy() {
+    
     this.isCopied1 = true;
     this.snackBar.open( 'Família de produtos copiada com sucesso.', '[x]Fechar', {
        duration: 2000});
