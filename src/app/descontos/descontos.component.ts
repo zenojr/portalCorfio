@@ -15,7 +15,7 @@ import { ClipboardService } from 'ngx-clipboard';
 export class DescontosComponent implements OnInit, AfterViewInit {
 
   constructor( public breakpointObserver: BreakpointObserver, private descontosService: DescontosService,
-    private snackBar: MatSnackBar, private clipboardService: ClipboardService ) {
+    private snackBar: MatSnackBar, private _clipboardService: ClipboardService ) {
       this.dataSource.filterPredicate = this.createFilter();
     }
 
@@ -110,6 +110,10 @@ export class DescontosComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
+  }
+
+  copy(text: string) {
+    this._clipboardService.copyFromContent(text);
   }
 
   callServiceToCopy() {
