@@ -216,7 +216,7 @@
               [cbContent]="item.fmFio + '% ' + item.fmParalelo + '% ' + item.fmPp + '% ' + item.fmFlex + '% ' + item.fmCabo + '% ' + item.fmNu + '%' " 
               (cbOnSuccess)="callServiceToCopy(cbContent)" (cbOnError)="onCopyFailure()" [class.btn-success]="isCopied1">copiar</button>
               
-              <input  value="item.fmFio + '% ' + item.fmParalelo + '% ' + item.fmPp + '% ' + item.fmFlex + '% ' + item.fmCabo + '% ' + item.fmNu + '%' " type="text" #inputTarget />
+              <input  value=" {{ item.fmFio }} + '% ' + item.fmParalelo + '% ' + item.fmPp + '% ' + item.fmFlex + '% ' + item.fmCabo + '% ' + item.fmNu + '%'"  type="text" #inputTarget />
  
             <button [ngxClipboard]="inputTarget">Copy</button>
 
