@@ -116,9 +116,7 @@ export class DescontosComponent implements OnInit, AfterViewInit {
     console.log(text);
   }
 
-  callServiceToCopy(text) {
-    text.replace('.', ',');
-    console.log(text);
+  callServiceToCopy() {
     this.isCopied1 = true;
     this.snackBar.open( 'Família de produtos copiada com sucesso.', '[x]Fechar', {
        duration: 2000});
