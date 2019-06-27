@@ -214,11 +214,7 @@
             <span class="input-group-append">
               <button mat-button color="primary" class="btn btn-default" type="button" ngxClipboard 
               [cbContent]="item.fmFio + '% ' + item.fmParalelo + '% ' + item.fmPp + '% ' + item.fmFlex + '% ' + item.fmCabo + '% ' + item.fmNu + '%' " 
-              (cbOnSuccess)="callServiceToCopy(cbContent)" (cbOnError)="onCopyFailure()" [class.btn-success]="isCopied1">copiar</button>
-              <button mat-button color="primary" class="btn btn-default" type="button" ngxClipboard 
-              
-              (cbOnSuccess)="callServiceToCopy(cbContent)" (cbOnError)="onCopyFailure()" [class.btn-success]="isCopied1">copi</button>
-              
+              (cbOnSuccess)="callServiceToCopy(cbContent)" (cbOnError)="onCopyFailure()" [class.btn-success]="isCopied1">copiar</button>              
             </span> 
             
         </div>
