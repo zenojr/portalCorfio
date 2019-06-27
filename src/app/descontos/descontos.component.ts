@@ -145,13 +145,16 @@ export class DescontosComponent implements OnInit, AfterViewInit {
       duration: 2000});
     }
     // Filtros FIM
-    
+
     // Get data from DB
     getDescontosTable(): void {
       this.descontosService.getDescontos()
       .subscribe(data => {
         console.log(data['ttDesc']);
         this.dataSource.data = data['ttDesc'];
+        let teste = data['ttDesc'];
+        teste = teste.replace('.', ',');
+        console.log(teste);
       });
     }
 
