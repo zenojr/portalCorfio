@@ -49,8 +49,7 @@ export class DescontosComponent implements OnInit, AfterViewInit {
     'fmCabo',
     'fmNu',
     'contrib',
-    'descPri',
-    'copy'
+    'descPri'
     ];
 
   dataSource = new MatTableDataSource<Descontos>();
