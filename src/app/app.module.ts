@@ -30,6 +30,7 @@ import { LimpaSufixoSelectPipe } from './descontos/pipes/limpa-sufixo-select.pip
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ClipboardModule } from 'ngx-clipboard';
 import { GroupByIcmsPipe } from './descontos/pipes/group-by-icms.pipe';
+import { CommaPipe } from './descontos/pipes/comma.pipe';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { GroupByIcmsPipe } from './descontos/pipes/group-by-icms.pipe';
     GroupByRegiaoPipe,
     GroupByNumeroTabPipe,
     FiltroEstabPipe,
-    LimpaSufixoSelectPipe
+    LimpaSufixoSelectPipe,
+    CommaPipe
   ],
   imports: [
     BrowserModule,

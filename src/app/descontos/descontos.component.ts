@@ -1,3 +1,4 @@
+import { CommaPipe } from './pipes/comma.pipe';
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { MatSort, MatPaginator, MatTableDataSource, MatSnackBar } from '@angular/material';
 import { DescontosService } from '../descontos.service';
@@ -5,6 +6,7 @@ import { Descontos } from './descontos.model';
 import { FormControl } from '@angular/forms';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { ClipboardService } from 'ngx-clipboard';
+
 
 
 @Component({
@@ -15,7 +17,7 @@ import { ClipboardService } from 'ngx-clipboard';
 export class DescontosComponent implements OnInit, AfterViewInit {
 
   constructor( public breakpointObserver: BreakpointObserver, private descontosService: DescontosService,
-    private snackBar: MatSnackBar, private _clipboardService: ClipboardService ) {
+    private snackBar: MatSnackBar, private _clipboardService: ClipboardService, private commapipe: CommaPipe ) {
       this.dataSource.filterPredicate = this.createFilter();
     }
 
@@ -152,6 +154,7 @@ export class DescontosComponent implements OnInit, AfterViewInit {
       .subscribe(data => {
         this.dataSource.data = data['ttDesc'];
         this.dataSource.data.forEach( dados => {
+          dados = this.commapipe.transform(dados);
           console.log(dados);
         });
       });
