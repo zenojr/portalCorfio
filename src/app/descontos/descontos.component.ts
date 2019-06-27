@@ -153,10 +153,7 @@ export class DescontosComponent implements OnInit, AfterViewInit {
       this.descontosService.getDescontos()
       .subscribe(data => {
         this.dataSource.data = data['ttDesc'];
-        this.dataSource.data.forEach( dados => {
-          dados = this.commapipe.transform(dados);
-          console.log(dados);
-        });
+        
       });
     }
 
