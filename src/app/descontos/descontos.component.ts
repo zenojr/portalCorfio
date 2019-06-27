@@ -153,6 +153,7 @@ export class DescontosComponent implements OnInit, AfterViewInit {
         console.log(data['ttDesc']);
         this.dataSource.data = data['ttDesc'];
         let teste = data['ttDesc'];
+        console.log('before' + teste);
         teste = teste.replace('.', ',');
         console.log(teste);
       });
