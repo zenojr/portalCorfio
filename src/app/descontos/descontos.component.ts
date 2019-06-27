@@ -104,15 +104,12 @@ export class DescontosComponent implements OnInit, AfterViewInit {
         this.dataSource.filter = JSON.stringify(this.filterValues);
       }
     );
-  
   }
 
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
   }
-
-  
 
   callServiceToCopy() {
     this.isCopied1 = true;
@@ -148,10 +145,12 @@ export class DescontosComponent implements OnInit, AfterViewInit {
       duration: 2000});
     }
     // Filtros FIM
+    
     // Get data from DB
     getDescontosTable(): void {
       this.descontosService.getDescontos()
       .subscribe(data => {
+        console.log(data['ttDesc']);
         this.dataSource.data = data['ttDesc'];
       });
     }
