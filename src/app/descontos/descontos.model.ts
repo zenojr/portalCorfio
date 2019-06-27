@@ -15,3 +15,4 @@ export interface Descontos
             descPri: number;
             nrTabpre: string;
         }
+        this.fmFio.replace('.', ',');

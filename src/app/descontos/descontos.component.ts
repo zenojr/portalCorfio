@@ -150,9 +150,7 @@ export class DescontosComponent implements OnInit, AfterViewInit {
     getDescontosTable(): void {
       this.descontosService.getDescontos()
       .subscribe(data => {
-        
         this.dataSource.data = data['ttDesc'];
-        
       });
     }
 
