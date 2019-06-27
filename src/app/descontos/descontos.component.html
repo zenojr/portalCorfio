@@ -196,7 +196,7 @@
     <!-- COLUNA DESCONTO PRIMARIO CONTRIBUINTE -->
     <ng-container matColumnDef="descPri">
       <th class='headerTable' mat-header-cell *matHeaderCellDef mat-sort-header> Desc.Pri </th>
-      <td #inputDescPri mat-cell *matCellDef="let item"> {{item.descPri | number:'2.2-5' }} % </td>
+      <td id="descPri" mat-cell *matCellDef="let item"> {{item.descPri | number:'2.2-5' }} % </td>
     </ng-container>
 
     <!-- COLUNA COPY -->
@@ -215,6 +215,9 @@
               <button mat-button color="primary" class="btn btn-default" type="button" ngxClipboard 
               [cbContent]="item.fmFio + '% ' + item.fmParalelo + '% ' + item.fmPp + '% ' + item.fmFlex + '% ' + item.fmCabo + '% ' + item.fmNu + '%' " 
               (cbOnSuccess)="callServiceToCopy(cbContent)" (cbOnError)="onCopyFailure()" [class.btn-success]="isCopied1">copiar</button>
+              <button mat-button color="primary" class="btn btn-default" type="button" ngxClipboard 
+              [cbContent]="descPri" 
+              (cbOnSuccess)="callServiceToCopy(cbContent)" (cbOnError)="onCopyFailure()" [class.btn-success]="isCopied1">copi</button>
               
             </span> 
             
