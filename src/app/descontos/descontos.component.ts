@@ -150,12 +150,9 @@ export class DescontosComponent implements OnInit, AfterViewInit {
     getDescontosTable(): void {
       this.descontosService.getDescontos()
       .subscribe(data => {
-        console.log(data['ttDesc']);
+        console.log(data['ttDesc'].replace('.', ','));
         this.dataSource.data = data['ttDesc'];
-        let teste = data['ttDesc'];
-        console.log('before' + teste);
-        teste = teste.replace('.', ',');
-        console.log(teste);
+        
       });
     }
 
