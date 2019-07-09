@@ -443,23 +443,23 @@ MIT
 
 @angular/material/sort
 
-@angular/material/button
-
-ngx-window-token
-MIT
-
-ngx-clipboard
-MIT
-
 @angular/material/table
 
 @angular/material/grid-list
+
+@angular/material/button
 
 @angular/material/tooltip
 
 @angular/material/paginator
 
 @angular/material/snack-bar
+
+ngx-window-token
+MIT
+
+ngx-clipboard
+MIT
 
 ngx-cookie-service
 MIT

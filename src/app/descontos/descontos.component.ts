@@ -6,7 +6,6 @@ import { FormControl } from '@angular/forms';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { ClipboardService } from 'ngx-clipboard';
 
-
 @Component({
   selector: 'app-descontos',
   templateUrl: './descontos.component.html',
@@ -15,7 +14,7 @@ import { ClipboardService } from 'ngx-clipboard';
 export class DescontosComponent implements OnInit, AfterViewInit {
 
   constructor( public breakpointObserver: BreakpointObserver, private descontosService: DescontosService,
-    private snackBar: MatSnackBar, private _clipboardService: ClipboardService ) {
+    private snackBar: MatSnackBar) {
       this.dataSource.filterPredicate = this.createFilter();
     }
 
@@ -149,7 +148,10 @@ export class DescontosComponent implements OnInit, AfterViewInit {
     getDescontosTable(): void {
       this.descontosService.getDescontos()
       .subscribe(data => {
-        this.dataSource.data = data['ttDesc'];
+        if ( data['ttDesc'] != null ) {
+          this.dataSource.data = data['ttDesc'];
+        }
+        alert('Representante sem cadastro de região!');
       });
     }
 
