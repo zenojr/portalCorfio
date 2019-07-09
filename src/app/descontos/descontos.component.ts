@@ -150,8 +150,9 @@ export class DescontosComponent implements OnInit, AfterViewInit {
       .subscribe(data => {
         if ( data['ttDesc'] != null ) {
           this.dataSource.data = data['ttDesc'];
+        } else {
+          console.log('Sem cadastro de região');
         }
-        console.log('Sem cadastro de região');
       });
     }
 
