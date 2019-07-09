@@ -152,6 +152,7 @@ export class DescontosComponent implements OnInit, AfterViewInit {
           this.dataSource.data = data['ttDesc'];
         } else {
           console.log('Sem cadastro de região');
+          alert('Representante sem cadastro de região!');
         }
       });
     }
