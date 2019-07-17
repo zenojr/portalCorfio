@@ -13,7 +13,6 @@ app.use(morgan(':method :url :response-time'));
 
 app.use(express.static(__dirname + '/dist/portal'));
 
-
 app.get('/*', (req, res) => 
     {
         res.sendFile(path.join(__dirname), count++),
@@ -22,7 +21,6 @@ app.get('/*', (req, res) =>
 const server = http.createServer(app);
 server.listen(port, () => {
     console.log('Portal Running...')
-     
 });
 
 
