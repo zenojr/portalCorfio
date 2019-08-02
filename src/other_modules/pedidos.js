@@ -150,5 +150,58 @@
         
         
     }
-//Fim script lista Redesp.                             
+
 </script>
+
+
+<style>
+    .blockRegiao {
+         background: #eee;
+         pointer-events: none;
+         touch-action: none;
+    }
+
+
+    .localEntrega{
+        display: inline;
+         float: right;
+    }
+
+    .addBtn{
+        margin-left: 2px;
+        cursor: pointer;
+        background-color: #d9d9d9;
+        padding-right: 3px;
+        padding-left: 3px;
+        padding-top: 2px;
+        padding-bottom: 2px;
+
+    }            
+     div.scrollBox ul{
+        list-style-type: none;
+        padding: 5px;
+     }            
+    #ulDesp {
+       margin-top: 0px;
+    }
+    .scrollBox {
+        background-color: white;
+        width: 445px;
+        height: 50px;
+        overflow: auto;
+        border: 1px solid black;
+        margin-bottom: 5px;
+    }
+    .viewRedesp {
+        width: 400px;
+        
+    }
+    .listaRedesp  {
+       
+    }
+    
+    #transp_red_input {
+        display: none;
+    }
+            
+</style>
