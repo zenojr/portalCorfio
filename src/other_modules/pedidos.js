@@ -1,10 +1,10 @@
 
 <script language="JavaScript">
 // Script controla campo regiao -- Zeno 02/08/19
-    var vc_regiao = "`vc-regiao`";
+    let vc_regiao = "`vc-regiao`";
     if (vc_regiao != "" ) {
         console.log('block regiao')
-        var regiaoSelect = document.getElementById("vc_regiao");
+        let regiaoSelect = document.getElementById("vc_regiao");
         regiaoSelect.classList.add("blockRegiao")
     }else{
         console.log('open regiao')
@@ -15,9 +15,9 @@
 <script language="JavaScript">
 // Script valida form, verifica se o rep adicionou o redespacho -- Zeno 31/07/19
     function checkForm() {
-       var cod_transp_red1 = document.forms["principal"]["cod_transp_red1"].value;
+       let cod_transp_red1 = document.forms["principal"]["cod_transp_red1"].value;
        if (cod_transp_red1 != 0) {
-           alert('Campo Transp Redesp: não adicionado. (Selecione 0 para nenhum)'  )
+           alert('Campo Transp Redesp: não adicionado. (Selecione 0 para nenhum)'  );
            return false
        }    
     }
@@ -32,13 +32,13 @@
         dataInput_ano = dataInput[0];
         dataInput_mes = dataInput[1];
         dataInput_dia = dataInput[2];
-        var dataOutput = dataInput_dia + '/' + dataInput_mes + '/' + dataInput_ano;
+        let dataOutput = dataInput_dia + '/' + dataInput_mes + '/' + dataInput_ano;
         document.getElementById("data_entrega").value = dataOutput;
         console.log('saida: ' + dataInput_dia + '/' + dataInput_mes + '/' + dataInput_ano);
      }
 
      console.log(data_entrega.value);
-     var da_dt_entrega = "`da-dt-entrega`";
+     let da_dt_entrega = "`da-dt-entrega`";
      console.log('entrada ' + da_dt_entrega);
      da_dt_entrega = da_dt_entrega.split("/");
      da_dt_dia = da_dt_entrega[0];
@@ -53,23 +53,23 @@
      console.log( da_dt_entregaSAIDA );
      document.getElementById('data_entrega_UI').value = da_dt_entregaINPUT;
 
-     var arrCod = [];
-     var data = '';
-     var codTrans = '';
-     var node;
-     var vcRedesp = "`vc-redesp`";
-     var transp = "`c-nome-transp`";
-     var inputCodTrans = document.getElementById('cod_transp').value;     
+     let arrCod = [];
+     let data = '';
+     let codTrans = '';
+     let node;
+     let vcRedesp = "`vc-redesp`";
+     let transp = "`c-nome-transp`";
+     let inputCodTrans = document.getElementById('cod_transp').value;     
      console.log(inputCodTrans);
 
      if( inputCodTrans != '' ) {
-         var xhttp = new XMLHttpRequest();
+         let xhttp = new XMLHttpRequest();
          xhttp.onreadystatechange = function(){
              if( this.readyState == 4 && this.status == 200 ){
-                 var xml = this.responseXML;
-                 var xmlNome = xml.getElementsByTagName("nome");
+                 let xml = this.responseXML;
+                 let xmlNome = xml.getElementsByTagName("nome");
 
-                 var nome = xmlNome[0].childNodes[0].nodeValue;
+                 let nome = xmlNome[0].childNodes[0].nodeValue;
                  console.log(nome);
                  document.getElementById("nome_transp").value = nome;
              }
