@@ -28,7 +28,6 @@ import { GroupByNumeroTabPipe } from './descontos/pipes/group-by-numero-tab.pipe
 import { FiltroEstabPipe } from './descontos/pipes/filtro-estab.pipe';
 import { LimpaSufixoSelectPipe } from './descontos/pipes/limpa-sufixo-select.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ClipboardModule } from 'ngx-clipboard';
 import { GroupByIcmsPipe } from './descontos/pipes/group-by-icms.pipe';
 import { CommaPipe } from './descontos/pipes/comma.pipe';
 
@@ -61,8 +60,7 @@ import { CommaPipe } from './descontos/pipes/comma.pipe';
     MatPaginatorModule,
     FormsModule,
     ReactiveFormsModule,
-    LayoutModule,
-    ClipboardModule
+    LayoutModule
   ],
   providers: [
     DescontosService,

@@ -52,8 +52,8 @@ export class DescontosComponent implements OnInit, AfterViewInit {
     ];
 
   dataSource = new MatTableDataSource<Descontos>();
-  @ViewChild(MatSort) sort: MatSort;
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   ngOnInit() {
     console.log(this.base);
