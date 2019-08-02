@@ -1,10 +1,13 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
-import { MatSort, MatPaginator, MatTableDataSource, MatSnackBar } from '@angular/material';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { DescontosService } from '../descontos.service';
 import { Descontos } from './descontos.model';
 import { FormControl } from '@angular/forms';
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { ClipboardService } from 'ngx-clipboard';
+
 
 @Component({
   selector: 'app-descontos',
