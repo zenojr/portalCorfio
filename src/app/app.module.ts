@@ -17,7 +17,7 @@ import { MatTableModule, MatSortModule, MatCardModule, MatSort, MatTableDataSour
 import { DescontosComponent } from './descontos/descontos.component';
 import { DescontosService } from './descontos.service';
 import { DescontosPipe } from './descontos/pipes/descontos.pipe';
-import { CookieService } from 'ngx-cookie-service';
+
 import { LimpaSufixoCvPipe } from './descontos/pipes/limpa-sufixo-cv.pipe';
 import { GroupByPipe } from './descontos/pipes/group-by.pipe';
 import { GroupByCodEstabelPipe } from './descontos/pipes/group-by-cod-estabel.pipe';
@@ -64,7 +64,6 @@ import { CommaPipe } from './descontos/pipes/comma.pipe';
   ],
   providers: [
     DescontosService,
-    CookieService,
     { provide: LOCALE_ID, useValue: "pt" }
   ],
   bootstrap: [AppComponent]
