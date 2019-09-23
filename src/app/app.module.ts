@@ -35,6 +35,7 @@ import { GroupByIcmsPipe } from './descontos/pipes/group-by-icms.pipe';
 import { CommaPipe } from './descontos/pipes/comma.pipe';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { Descontosv2Component } from './descontosv2/descontosv2.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { environment } from '../environments/environment';
     GroupByNumeroTabPipe,
     FiltroEstabPipe,
     LimpaSufixoSelectPipe,
-    CommaPipe
+    CommaPipe,
+    Descontosv2Component
   ],
   imports: [
     BrowserModule,

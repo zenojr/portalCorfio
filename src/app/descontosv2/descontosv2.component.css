@@ -1,0 +1,13 @@
+.logo img {
+    max-width: 70%;
+    min-width: 20%;
+    height: auto;
+    float: left;
+    margin: 5px;
+}
+
+.adicionais {
+    
+    display: flex;
+    flex-direction: column;
+}

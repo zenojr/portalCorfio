@@ -1,0 +1,19 @@
+<mat-grid-list [cols]="breakpoint" rowHeight="4:2" (window:resize)="onResize($event)" >
+    <mat-grid-tile class="logo">
+        <img src="../../assets/img/corfio_2019.png" alt="">
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <div>
+            <div> <b>Data: </b>{{ data | date: "short" }} </div>
+            <div> <b>Usuário:</b>  </div>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <div class="flex-container">
+            <div><b> Adicionais: </b> </div>
+            <div>+ 4% no flex 2,50 mm</div>
+            <div>+ 3% no corfitox 750v</div>
+            <div>+ 5% no corfitox 1kv</div>  
+        </div>
+    </mat-grid-tile>
+</mat-grid-list>
