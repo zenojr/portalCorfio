@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BreakpointObserver } from '@angular/cdk/layout';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-descontosv2',
@@ -9,12 +10,21 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 export class Descontosv2Component implements OnInit {
 
   data = new Date();
+  estab = new FormControl('');
+  uf = new FormControl('');
+  regiao = new FormControl('');
+  numTable = new FormControl('');
 
-  constructor(public breakPointObserver: BreakpointObserver) { }
+
+  formQuery: FormGroup;
+
+  constructor(public breakPointObserver: BreakpointObserver, private _formBuilder: FormBuilder) { }
   breakpoint: number;
 
   ngOnInit() {
     this.breakpoint = (window.innerWidth <= 800) ? 1 : 3;
+
+
   }
 
   onResize(event) {

@@ -1,4 +1,4 @@
-<mat-grid-list [cols]="breakpoint" rowHeight="4:2" (window:resize)="onResize($event)" >
+<mat-grid-list [cols]="breakpoint" rowHeight="4:1.5" (window:resize)="onResize($event)" >
     <mat-grid-tile class="logo">
         <img src="../../assets/img/corfio_2019.png" alt="">
     </mat-grid-tile>
@@ -9,7 +9,7 @@
         </div>
     </mat-grid-tile>
     <mat-grid-tile>
-        <div class="flex-container">
+        <div>
             <div><b> Adicionais: </b> </div>
             <div>+ 4% no flex 2,50 mm</div>
             <div>+ 3% no corfitox 750v</div>
@@ -17,3 +17,39 @@
         </div>
     </mat-grid-tile>
 </mat-grid-list>
+
+<div class="form-container">
+    <mat-form-field>
+        <mat-select [formControl]="estab" placeholder="Estab. de Venda">
+            <mat-option value="Valor">Valor</mat-option>
+            <mat-option value="Valor2">Valor2</mat-option>
+            <mat-option value="Valor3">Valor3</mat-option>
+        </mat-select>                     
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-select [formControl]="uf" placeholder="UF">
+            <mat-option value="SC">SC</mat-option>
+            <mat-option value="SP">SP</mat-option>
+            <mat-option value="BA">BA</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-select [formControl]="regiao" placeholder="Região">
+            <mat-option value="option">Option</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-select [formControl]="numTable" placeholder="Num. Tabela">
+            <mat-option value="table1">Table1</mat-option>
+            <mat-option value="table2">table2</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <div>
+        <button mat-raised-button color="primary"> Consultar </button>
+    </div>
+</div>
+
+<p> saida {{ estab.value }} {{ uf.value }} {{ regiao.value }} {{ numTable.value }} </p>

@@ -1,13 +1,18 @@
 .logo img {
-    max-width: 70%;
+    max-width: 60%;
     min-width: 20%;
     height: auto;
     float: left;
     margin: 5px;
 }
 
-.adicionais {
-    
+.form-container {
     display: flex;
-    flex-direction: column;
-}
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+.form-container > * {
+    width: 15%;
+    padding: 10px;
+  }

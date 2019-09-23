@@ -1,5 +1,4 @@
-export interface Descontos
-        {
+export interface Descontos {
             codEstabel: string;
             uf: string;
             regiao: string;
@@ -15,4 +14,4 @@ export interface Descontos
             descPri: number;
             nrTabpre: string;
         }
-        
+
