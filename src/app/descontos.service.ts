@@ -1,7 +1,9 @@
+import { Select } from './descontosv2/select.model';
 import { Injectable } from '@angular/core';
 import { Descontos } from './descontos/descontos.model';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+
 
 @Injectable({
   providedIn: 'root'
@@ -20,8 +22,13 @@ export class DescontosService {
 
   getDescontos(): Observable<Descontos[]> {
     const headers = new HttpHeaders();
-    console.log(headers);
+    console.log('headers' + `${headers}`);
     return this.http.get<Descontos[]>(this.descontosURL + this.user , {headers});
+  }
+
+  getSelectsUser(user): Observable<Select[]> {
+    const headers = new HttpHeaders();
+    return this.http.get<Select[]>(this.descontosURL + user , {headers});
   }
 
   getUser() {

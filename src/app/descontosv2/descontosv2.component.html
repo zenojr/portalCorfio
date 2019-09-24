@@ -1,4 +1,4 @@
-<mat-grid-list [cols]="breakpoint" rowHeight="4:1.5" (window:resize)="onResize($event)" >
+<mat-grid-list [cols]="breakpoint" rowHeight="4:1.5" (window:resize)="onResize($event)">
     <mat-grid-tile class="logo">
         <img src="../../assets/img/corfio_2019.png" alt="">
     </mat-grid-tile>
@@ -53,3 +53,7 @@
 </div>
 
 <p> saida {{ estab.value }} {{ uf.value }} {{ regiao.value }} {{ numTable.value }} </p>
+
+<ul *ngFor="let item of dados | async">
+    <li> {{ item }} </li>
+</ul>
