@@ -31,11 +31,12 @@ export class Descontosv2Component implements OnInit {
               private       _formBuilder: FormBuilder,
               private   descontosService: DescontosService,
               private               http: HttpClient) { }
+
   breakpoint: number;
 
   ngOnInit() {
     this.breakpoint = (window.innerWidth <= 800) ? 1 : 3;
-    this.sendQuery();
+    // this.sendQuery();
     this.teste();
 
   }
