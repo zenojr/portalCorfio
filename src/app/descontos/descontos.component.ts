@@ -27,6 +27,7 @@ export class DescontosComponent implements OnInit, AfterViewInit {
     text2: string;
     isCopied1: boolean;
     basic = false;
+    loader = true;
 
     // FILTROS
     estabVdaFilter = new FormControl('');
@@ -153,6 +154,8 @@ export class DescontosComponent implements OnInit, AfterViewInit {
       .subscribe(data => {
         if ( data['ttDesc'] != null ) {
           this.dataSource.data = data['ttDesc'];
+          console.log('request complete');
+          this.loader = false;
         } else {
           console.log('Sem cadastro de região');
           alert('Representante sem cadastro de região!');

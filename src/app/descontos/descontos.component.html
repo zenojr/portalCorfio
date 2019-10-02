@@ -1,5 +1,4 @@
-<!-- <mat-spinner></mat-spinner> -->
- 
+
 <div>
   <mat-grid-list [cols]="breakpoint" rowHeight="4:1.5" (window:resize)="onResize($event)">
     <mat-grid-tile class="logo">
@@ -40,6 +39,7 @@
   </div>
   
   
+  <mat-progress-bar *ngIf="loader" mode="indeterminate"></mat-progress-bar>
   <table class="tablePrincial mat-elevation-z4" mat-table [dataSource]="dataSource" matSort >
     
     <!-- COLUNA ESTAB. VDA -->

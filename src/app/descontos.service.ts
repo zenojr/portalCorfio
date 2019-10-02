@@ -38,4 +38,8 @@ export class DescontosService {
     return document.URL.slice(62, 64);
   }
 
+  newGetDescontos(): Observable<Descontos[]> {
+    return this.http.get<Descontos[]>(this.descontosURL + 'zeno');
+  }
+
 }

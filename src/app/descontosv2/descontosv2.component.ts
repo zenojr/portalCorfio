@@ -1,3 +1,4 @@
+import { Descontos } from './../descontos/descontos.model';
 import { HttpClient } from '@angular/common/http';
 import { Select } from './select.model';
 import { Observable, Subscriber, observable, from } from 'rxjs';
@@ -5,6 +6,7 @@ import { DescontosService } from './../descontos.service';
 import { Component, OnInit } from '@angular/core';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+
 
 @Component({
   selector: 'app-descontosv2',
@@ -17,6 +19,7 @@ export class Descontosv2Component implements OnInit {
   private descontosURL = 'http://portal.corfio.com.br:8081/cgi-bin/wspd_cgi.sh/WService=corfio/wep/we0040041.p?usuario=zeno';
 
   dados: Select[];
+  descontos: Descontos[];
 
       data = new Date();
      estab = new FormControl('');
@@ -24,9 +27,8 @@ export class Descontosv2Component implements OnInit {
     regiao = new FormControl('');
   numTable = new FormControl('');
 
-
   formQuery: FormGroup;
-
+  loader = true;
   constructor(public  breakPointObserver: BreakpointObserver,
               private       _formBuilder: FormBuilder,
               private   descontosService: DescontosService,
@@ -37,8 +39,28 @@ export class Descontosv2Component implements OnInit {
   ngOnInit() {
     this.breakpoint = (window.innerWidth <= 800) ? 1 : 3;
     // this.sendQuery();
-    this.teste();
+    // this.teste();
+    this.getDescontosObs();
 
+  }
+
+  getDescontosObs(): void {
+    // this.descontosService.newGetDescontos()
+    //     .subscribe(descontos => this.descontos = descontos['ttDesc']);
+
+
+
+    this.descontosService.newGetDescontos()
+        .subscribe( descontos => {this.descontos = descontos['ttDesc'];
+                                  console.log('complete');
+                                  this.loader = false; });
+
+
+        // observable.subscribe({
+        //   next(x) { console.log('got value ' + x); },
+        //   error(err) { console.error('something wrong occurred: ' + err); },
+        //   complete() { console.log('done'); }
+        // });
   }
 
   teste() {

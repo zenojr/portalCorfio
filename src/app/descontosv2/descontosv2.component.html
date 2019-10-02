@@ -54,6 +54,8 @@
 
 <p> saida {{ estab.value }} {{ uf.value }} {{ regiao.value }} {{ numTable.value }} </p>
 
-<ul *ngFor="let item of dados | async">
-    <li> {{ item }} </li>
+<mat-spinner *ngIf="loader"></mat-spinner>
+<ul *ngFor="let desconto of descontos">
+    <li> {{ desconto.codEstabel }} {{ desconto.contrib }} {{ desconto.descPri }} {{ desconto.fmCabo }} {{ desconto.fmFio }} </li>
+    
 </ul>
