@@ -4,7 +4,7 @@ import { Descontos } from './descontos/descontos.model';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-@Injectable({
+@Injectable({ 
   providedIn: 'root'
 })
 export class DescontosService {
